@@ -27,7 +27,7 @@ export class WeatherService {
 
 
 
-    return this.httpClient.get(this.endpoints.fetchWeatherForecastHourly())
+    return this.httpClient.jsonp(this.endpoints.fetchWeatherForecastHourly(), 'jsoncallback')
       .pipe(
         map(result => {
           const entry = result["hourlyForecasts"]["forecastLocation"]["forecast"].filter(item => item.utcTime === newTimestamp);
