@@ -12,7 +12,7 @@ export class EndpointsConfig {
     this.weatherApiUri = environment.weather_api_uri;
   }
 
-  fetchWeather(): string {
+  fetchWeatherForecastHourly(): string {
     return `${this.weatherApiUri}`;
   }
 }
