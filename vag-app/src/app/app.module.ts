@@ -6,11 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MglTimelineModule } from 'angular-mgl-timeline';
 import { AppComponent } from './app.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TimelineComponent
+    TimelineComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
