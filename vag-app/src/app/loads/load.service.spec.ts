@@ -14,7 +14,7 @@ describe('LoadService', () => {
 
   it ('should get load per line', () =>  {
     const service: LoadService = TestBed.get(LoadService);
-    const actual = service.getLoad();
+    const actual = service.getLoad('1');
 
     const expectedDate = '1969-07-20T00:20:18.000Z';
     expect(actual)

@@ -3,6 +3,7 @@ import { RoutingService } from '../services/routing/routing.service';
 import { RoutingInfo } from '../shared/routing-info.entity';
 import { WeatherService } from '../services/weather/weather.service';
 import { Weather } from '../shared/weather.entity';
+import { LoadService } from '../loads/load.service';
 
 @Component( {
     selector: 'app-timeline',
@@ -11,18 +12,18 @@ import { Weather } from '../shared/weather.entity';
 } )
 export class TimelineComponent implements OnInit {
 
-    private routes: RoutingInfo[] = [];
+    private routes: any[] = [];
     private weather: Weather = new Weather('0', 'sunny');
 
     constructor(
         private routingService: RoutingService,
         private weatherService: WeatherService,
+        private loadService: LoadService,
     ) {
     }
 
     ngOnInit() {
         this.weatherService.fetchWeatherForecastHourly(new Date()).subscribe(value => {
-            console.log(value);
             this.weather = value;
         });
 
@@ -34,9 +35,13 @@ export class TimelineComponent implements OnInit {
             } )
             .then(
                 ( results: RoutingInfo[] ) => {
+
                     console.dir( results );
 
+
+                    results.forEach(item => item.steps = this.loadService.getLoad(item.id));
                     this.routes = results;
+                    console.dir(this.routes);
                 },
                 ( status ) => {
                     console.error( status );

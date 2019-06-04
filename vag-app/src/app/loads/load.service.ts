@@ -12,14 +12,14 @@ export class LoadService {
   /**
    * returns the current route's load distribution
    */
-  getLoad() {
+  getLoad(id: string) {
 
-    const linesOnRoute = this.routeService.routeInfo('1');
+    const linesOnRoute = this.routeService.routeInfo(id);
 
     const result = JSON.parse(JSON.stringify(linesOnRoute));
     result.map((transport) => {
       transport.loadState = this.capService
-        .getState(transport.name, transport.direction, transport.time);
+        .getState(transport.name, transport.direction, new Date(transport.time));
     });
 
     return result;
