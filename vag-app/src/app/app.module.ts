@@ -7,12 +7,14 @@ import { MglTimelineModule } from 'angular-mgl-timeline';
 import { AppComponent } from './app.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { DemoComponent } from './demo/demo.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimelineComponent,
-    DemoComponent
+    DemoComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

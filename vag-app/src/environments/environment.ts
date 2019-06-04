@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  weather_api_uri: 'https://weather.cit.api.here.com/weather/1.0/report.json?product=forecast_hourly&name=N%C3%BCrnberg&' +
+                    'app_id=KzyL5RErmVvso6pdbObR&app_code=1B5qPTN8--pmg0PXzrVXCg'
 };
 
 /*
