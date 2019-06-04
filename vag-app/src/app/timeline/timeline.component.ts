@@ -5,6 +5,7 @@ import { WeatherService } from '../services/weather/weather.service';
 import { Weather } from '../shared/weather.entity';
 import { LoadService } from '../loads/load.service';
 import { CapacityState } from '../vag-capacity/capacity-state';
+import { PreferencesService } from '../preferences/preferences.service';
 
 @Component( {
     selector: 'app-timeline',
@@ -20,6 +21,7 @@ export class TimelineComponent implements OnInit {
         private routingService: RoutingService,
         private weatherService: WeatherService,
         private loadService: LoadService,
+        private preferencesService: PreferencesService
     ) {
     }
 
@@ -28,11 +30,13 @@ export class TimelineComponent implements OnInit {
             this.weather = value;
         });
 
+        const preferences = this.preferencesService.load();
+
         this.routingService
             .navigate( {
                 startTime: new Date(),
-                startAddress: 'Hugenottenplatz, Erlangen',
-                endAddress: 'Gostenhof, Nürnberg',
+                startAddress: preferences.home,
+                endAddress: preferences.work,
             } )
             .then(
                 ( results: RoutingInfo[] ) => {
