@@ -7,7 +7,7 @@ import { RoutingService } from './services/routing/routing.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
- 
+
   title = 'vag-app';
 
   constructor(private routingService: RoutingService) { }

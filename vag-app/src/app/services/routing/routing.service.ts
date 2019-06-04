@@ -10,9 +10,7 @@ declare const google: any;
 } )
 export class RoutingService {
 
-    private directionsService: any;
-
-    constructor() {
+  constructor() {
     }
 
     public getDirectionsService() {
@@ -57,21 +55,23 @@ export class RoutingService {
     }
 
     public routeInfo(id: string): TransitLine[] {
-        return [
+
+      const date = new Date('July 20, 69 00:20:18 GMT+00:00');
+      return [
             {
                 name: '39',
                 direction: 'Frankenstraße',
-                time: new Date(),
+                time: date,
             },
             {
                 name: '65',
                 direction: 'Hiroshimaplatz',
-                time: new Date(),
+                time: date,
             },
             {
                 name: '68',
                 direction: 'Langwasser Mitte',
-                time: new Date(),
+                time: date,
             },
         ];
     }

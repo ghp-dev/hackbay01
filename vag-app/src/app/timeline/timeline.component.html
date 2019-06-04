@@ -1,12 +1,42 @@
-<mgl-timeline>
+<mgl-timeline focusOnOpen="true" mobileWidthThreshold="10000">
     <mgl-timeline-entry>
-        <mgl-timeline-entry-header>Header</mgl-timeline-entry-header>
-        <mgl-timeline-entry-content>Content</mgl-timeline-entry-content>
-        <mgl-timeline-entry-dot [class]="color ? 'primary' : 'accent'"></mgl-timeline-entry-dot>
+        <mgl-timeline-entry-header>
+          <div class="row">
+            <div class="col-xs-12 col-md-2">
+            </div>
+            <div class="col-xs-12 col-md-7">
+                U-Bahn 1 - Plärrer
+            </div>
+            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end">
+                7°C Sonnig
+            </div>
+          </div>
+        </mgl-timeline-entry-header>
+        <mgl-timeline-entry-content>
+          <div class="row" style="display: flex; justify-content: center">
+            U-Bahn 1 → Bus 65 → Tram 7
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-xs-12 col-md-9">
+                • Behinderungen durch Berufsverkehr
+            </div>
+            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end">
+                → Details
+            </div>
+          </div>
+        </mgl-timeline-entry-content>
+        <mgl-timeline-entry-dot [class]="'accent'">
+          &nbsp;17:05
+        </mgl-timeline-entry-dot>
     </mgl-timeline-entry>
     <mgl-timeline-entry>
-        <mgl-timeline-entry-header>Header</mgl-timeline-entry-header>
+        <mgl-timeline-entry-header>
+          Bus 65
+        </mgl-timeline-entry-header>
         <mgl-timeline-entry-content>Content</mgl-timeline-entry-content>
-        <mgl-timeline-entry-dot [class]="color ? 'primary' : 'accent'"></mgl-timeline-entry-dot>
+        <mgl-timeline-entry-dot [class]="'accent'">
+          &nbsp;17:25
+        </mgl-timeline-entry-dot>
     </mgl-timeline-entry>
 </mgl-timeline>
