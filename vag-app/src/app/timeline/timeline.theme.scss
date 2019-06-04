@@ -19,7 +19,8 @@
             color: map-get($foreground, base);
 
             & .mgl-timeline-entry-card-header {
-                background-color: map-get($background, app-bar) !important;
+                // background-color: map-get($background, app-bar) !important;
+                background-color: white;
             }
         }
 
@@ -33,7 +34,7 @@
             &.accent {
                 background-color: mat-color($accent);
             }
-    }
+      }
     }
   }
 

@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/normalize.css/normalize.css';
 @import './app/timeline/timeline.theme.scss';
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
@@ -9,7 +10,8 @@
 @include mat-core();
 
 html, body {
-    font-family: sans-serif;
+  font-family: sans-serif;
+  background: #FFDF00;
 }
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
@@ -23,6 +25,12 @@ $mgl-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $mgl-app-theme: mat-light-theme($mgl-app-primary, $mgl-app-accent, $mgl-app-warn);
+
+// $custom-background-color: red;
+
+// $background: map-get($mgl-app-theme, background);
+// $background: map_merge($background, (background: $custom-background-color));
+// $mgl-app-theme: map_merge($mgl-app-theme, (background: $background));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
