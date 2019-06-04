@@ -2,6 +2,7 @@
 @import '../node_modules/normalize.css/normalize.css';
 @import './app/timeline/timeline.theme.scss';
 @import '~@angular/material/theming';
+@import '../node_modules/flexboxgrid/css/flexboxgrid.css';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -11,7 +12,7 @@
 
 html, body {
   font-family: sans-serif;
-  background: #FFDF00;
+  background: #eee;
 }
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss

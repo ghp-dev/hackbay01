@@ -1,7 +1,7 @@
 mgl-timeline {
   max-width: 40rem;
   margin: 0 auto;
-  background: #FFDF00;
+  background: transparent;
 }
 
 mgl-timeline-entry-dot {
@@ -11,8 +11,20 @@ mgl-timeline-entry-dot {
   // justify-content: center;
   // padding-left: 1rem;
   color: white;
+  background: linear-gradient(124deg, darkred, darkred) !important;
+  // background-size: 1800% 1800%;
 }
+
+.expanded mgl-timeline-entry-header {
+  color: white;
+}
+
 
 .entry-dot-content {
   color: white;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
 }
