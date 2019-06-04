@@ -36,7 +36,7 @@
             </div>
           </div>
         </mgl-timeline-entry-content>
-        <mgl-timeline-entry-dot [class]="'accent'">
+        <mgl-timeline-entry-dot [class]="'accent'" [ngClass]="getLoadStateClass(route)">
           &nbsp;{{route.startTime | date:'HH:mm' }}
         </mgl-timeline-entry-dot>
     </mgl-timeline-entry>
