@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { DemoComponent } from './demo/demo.component';
 import { HeaderComponent } from './header/header.component';
+import { RoutingComponent } from './routing/routing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimelineComponent,
     DemoComponent,
-    HeaderComponent
+    HeaderComponent,
+    RoutingComponent
   ],
   imports: [
     BrowserModule,

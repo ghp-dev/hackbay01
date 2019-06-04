@@ -1,8 +1,6 @@
 export interface RoutingRequestEntity {
-    startTime: Date;
-    endTime: Date;
-    startLat: number;
-    startLong: number;
-    endLat: number;
-    endLong: number;
+    startTime?: Date;
+    endTime?: Date;
+    startAddress: string;
+    endAddress: string;
 }

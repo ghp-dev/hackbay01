@@ -1,8 +1,11 @@
 import { TransitLine } from './transit-line.entity';
 
-export interface RoutingInfo {
+export class RoutingInfo {
+    id: string;
     startTime: Date;
     startStation: string;
     startTransitLine: TransitLine;
-    vehicleIcons: String[];
+    vehicleIcons: string[] = [];
+
+    steps: Array<TransitLine> = [];
 }
