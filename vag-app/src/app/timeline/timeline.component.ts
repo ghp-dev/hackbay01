@@ -8,10 +8,12 @@ import { WeatherService } from '../services/weather/weather.service';
 })
 export class TimelineComponent implements OnInit {
 
-  constructor() { }
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit() {
-
+    this.weatherService.fetchWeatherForecastHourly(new Date()).subscribe(value => {
+      console.log(value);
+    });
   }
 
 }
