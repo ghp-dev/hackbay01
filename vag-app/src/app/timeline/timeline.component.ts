@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../services/weather/weather.service';
 
 @Component({
   selector: 'app-timeline',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimelineComponent implements OnInit {
 
-  constructor() { }
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit() {
+    /*
+    this.weatherService.fetchWeatherForecastHourly()
+    .subscribe(() => {
+      console.log('klappt.');
+    }, error => {
+      console.log(error);
+    }); */
   }
 
 }
