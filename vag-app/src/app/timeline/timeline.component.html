@@ -1,11 +1,15 @@
 <mgl-timeline focusOnOpen="true" mobileWidthThreshold="10000">
-    <mgl-timeline-entry>
+    <mgl-timeline-entry *ngFor="let route of routes">
         <mgl-timeline-entry-header>
           <div class="row">
             <div class="col-xs-12 col-md-2">
             </div>
             <div class="col-xs-12 col-md-7">
-                U-Bahn 1 - Plärrer
+              {{route.startStation}}
+              <img
+                  *ngFor="let icon of route.vehicleIcons"
+                  src="{{ icon }}"
+              />
             </div>
             <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end">
                 7°C Sonnig
@@ -14,7 +18,13 @@
         </mgl-timeline-entry-header>
         <mgl-timeline-entry-content>
           <div class="row" style="display: flex; justify-content: center">
-            U-Bahn 1 → Bus 65 → Tram 7
+            <div *ngFor="let step of route.steps; let i = index">
+              <img
+                  src="{{ step.icon }}"
+              />
+              {{ step.name }}
+              <span *ngIf="i < route.steps.length - 1"> → </span>
+            </div>
           </div>
           <hr />
           <div class="row">
@@ -27,16 +37,7 @@
           </div>
         </mgl-timeline-entry-content>
         <mgl-timeline-entry-dot [class]="'accent'">
-          &nbsp;17:05
-        </mgl-timeline-entry-dot>
-    </mgl-timeline-entry>
-    <mgl-timeline-entry>
-        <mgl-timeline-entry-header>
-          Bus 65
-        </mgl-timeline-entry-header>
-        <mgl-timeline-entry-content>Content</mgl-timeline-entry-content>
-        <mgl-timeline-entry-dot [class]="'accent'">
-          &nbsp;17:25
+          &nbsp;{{route.startTime | date:'HH:mm' }}
         </mgl-timeline-entry-dot>
     </mgl-timeline-entry>
 </mgl-timeline>

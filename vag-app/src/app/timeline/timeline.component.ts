@@ -1,17 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../services/weather/weather.service';
+import { RoutingService } from '../services/routing/routing.service';
+import { RoutingInfo } from '../shared/routing-info.entity';
 
-@Component({
-  selector: 'app-timeline',
-  templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.scss']
-})
+@Component( {
+    selector: 'app-timeline',
+    templateUrl: './timeline.component.html',
+    styleUrls: [ './timeline.component.scss' ]
+} )
 export class TimelineComponent implements OnInit {
 
-  constructor() { }
+    private routes: RoutingInfo[] = [];
 
-  ngOnInit() {
+    constructor(
+        private routingService: RoutingService
+    ) {
+    }
 
-  }
+    ngOnInit() {
+        this.routingService
+            .navigate( {
+                startTime: new Date(),
+                startAddress: 'Hugenottenplatz, Erlangen',
+                endAddress: 'Gostenhof, Nürnberg',
+            } )
+            .then(
+                ( results: RoutingInfo[] ) => {
+                    console.dir( results );
+
+                    this.routes = results;
+                },
+                ( status ) => {
+                    console.error( status );
+                }
+            );
+    }
 
 }
