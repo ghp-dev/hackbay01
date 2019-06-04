@@ -1,12 +1,20 @@
-<mgl-timeline>
+<mgl-timeline focusOnOpen="true" mobileWidthThreshold="10000">
     <mgl-timeline-entry>
-        <mgl-timeline-entry-header>Header</mgl-timeline-entry-header>
+        <mgl-timeline-entry-header>
+          U-Bahn 1
+        </mgl-timeline-entry-header>
         <mgl-timeline-entry-content>Content</mgl-timeline-entry-content>
-        <mgl-timeline-entry-dot [class]="color ? 'primary' : 'accent'"></mgl-timeline-entry-dot>
+        <mgl-timeline-entry-dot [class]="'accent'">
+          &nbsp;17:05
+        </mgl-timeline-entry-dot>
     </mgl-timeline-entry>
     <mgl-timeline-entry>
-        <mgl-timeline-entry-header>Header</mgl-timeline-entry-header>
+        <mgl-timeline-entry-header>
+          Bus 65
+        </mgl-timeline-entry-header>
         <mgl-timeline-entry-content>Content</mgl-timeline-entry-content>
-        <mgl-timeline-entry-dot [class]="color ? 'primary' : 'accent'"></mgl-timeline-entry-dot>
+        <mgl-timeline-entry-dot [class]="'accent'">
+          &nbsp;17:25
+        </mgl-timeline-entry-dot>
     </mgl-timeline-entry>
 </mgl-timeline>
