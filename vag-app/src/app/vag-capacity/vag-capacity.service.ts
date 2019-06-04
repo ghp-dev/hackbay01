@@ -15,6 +15,9 @@ export class VagCapacityService {
     if (line === 'U1' && this.isCommutingTime(time)) {
       return CapacityState.Red;
     }
+    if (line === 'U3') {
+      return CapacityState.Yellow;
+    }
     return CapacityState.Green;
   }
 

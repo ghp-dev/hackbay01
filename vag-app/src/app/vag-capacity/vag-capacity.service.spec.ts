@@ -46,4 +46,16 @@ describe('VagCapacityService', () => {
 
     expect(result).toBe(CapacityState.Red);
   });
+
+  it('should return state yellow for line U3 in both directions and all day long', () => {
+    let result = service.getState('U3', 'Nürnberg Gustav-Adolf-Straße', new Date(2019, 5, 6, 16, 25, 0, 0));
+    expect(result).toBe(CapacityState.Yellow);
+    result = service.getState('U3', 'Nürnberg Nordwestring', new Date(2019, 5, 6, 23, 25, 0, 0));
+    expect(result).toBe(CapacityState.Yellow);
+    result = service.getState('U3', 'Nürnberg Nordwestring', new Date(2019, 5, 6, 8, 25, 0, 0));
+    expect(result).toBe(CapacityState.Yellow);
+    result = service.getState('U3', 'Nürnberg Gustav-Adolf-Straße', new Date(2019, 5, 6, 7, 25, 0, 0));
+    expect(result).toBe(CapacityState.Yellow);
+  });
+
 });
