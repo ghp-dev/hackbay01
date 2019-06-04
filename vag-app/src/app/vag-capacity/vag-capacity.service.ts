@@ -9,7 +9,7 @@ export class VagCapacityService {
   constructor() { }
 
   getState(line: string, direction: string, time: Date): CapacityState {
-    if (direction === 'Nürnberg Hauptbahnhof' && this.isCommutingTime(time)) {
+    if (direction === 'Nürnberg Hbf' && this.isCommutingTime(time)) {
       return CapacityState.Red;
     }
     if (line === 'U1' && this.isCommutingTime(time)) {
