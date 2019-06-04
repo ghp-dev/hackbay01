@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TransitLine } from '../../shared/transit-line.entity';
+import { RoutingRequestEntity } from '../../shared/routing-request.entity';
+import { RoutingInfo } from '../../shared/routing-info.entity';
 
 declare const google: any;
 
@@ -8,7 +10,7 @@ declare const google: any;
 } )
 export class RoutingService {
 
-    private directionsService: any;
+    private routes: Map<string, RoutingInfo> = new Map<string, RoutingInfo>();
 
     constructor() {
     }
@@ -17,47 +19,77 @@ export class RoutingService {
         return new google.maps.DirectionsService();
     }
 
-    public navigate() {
-        return this.getDirectionsService().route( {
-            origin: { lat: 49.450520, lng: 11.080480 },
-            destination: { lat: 49.443056, lng: 11.094571 },
-            travelMode: 'TRANSIT'
-        }, ( response, status ) => {
-            console.log( response );
-            console.log( status );
+    public navigate( routingRequestEntity: RoutingRequestEntity ) {
+
+        const routingInfos: RoutingInfo[] = [];
+
+        return new Promise( ( resolve, reject ) => {
+            this.getDirectionsService().route( {
+                origin: routingRequestEntity.startAddress,
+                destination: routingRequestEntity.endAddress,
+                transitOptions: {
+                    arrivalTime: routingRequestEntity.startTime,
+                    departureTime: routingRequestEntity.endTime
+                },
+                provideRouteAlternatives: true,
+                travelMode: 'TRANSIT'
+            }, ( response, status ) => {
+                if (status === 'OK') {
+                    response.routes.forEach( routes => {
+                        let gotFirstTransit = false;
+                        const routingInfo = new RoutingInfo();
+                        routingInfo.id = this.createRouteId();
+                        routingInfo.startTime = routes.legs[ 0 ].departure_time.value;
+
+                        routes.legs[ 0 ].steps.forEach( ( step ) => {
+                            console.dir( step );
+
+                            if (step.travel_mode === 'TRANSIT') {
+                                if (!gotFirstTransit) {
+                                    routingInfo.startStation = step.transit.departure_stop.name;
+                                    routingInfo.startTransitLine = step.transit.line.short_name;
+                                    gotFirstTransit = true;
+                                }
+                                routingInfo.vehicleIcons.push( step.transit.line.vehicle.icon );
+
+                                routingInfo.steps.push( {
+                                    time: step.transit.departure_time.value,
+                                    direction: step.transit.headsign,
+                                    name: step.transit.line.short_name,
+                                    icon: step.transit.line.vehicle.icon,
+                                } );
+                            }
+                        } );
+
+                        this.routes.set( routingInfo.id, routingInfo );
+                        routingInfos.push( routingInfo );
+                    } );
+                    resolve( routingInfos );
+                } else {
+                    reject( status );
+                }
+            } );
         } );
     }
 
-    public routeInfo(id: string): TransitLine[] {
-        return [
-            {
-                name: '39',
-                direction: 'Frankenstraße',
-                time: new Date(),
-            },
-            {
-                name: '65',
-                direction: 'Hiroshimaplatz',
-                time: new Date(),
-            },
-            {
-                name: '68',
-                direction: 'Langwasser Mitte',
-                time: new Date(),
-            },
-        ];
+    public routeInfo( id: string ): TransitLine[] {
+
+        const routingInfo = this.routes.get( id );
+
+        if (routingInfo === null) {
+            return null;
+        }
+
+        return routingInfo.steps;
     }
 
-    // Route
-    //  id
-    // ->
-    // [
-    //   Linie
-    //   Direction
-    //   Time
-    // ]
-
-    //
-
-
+    private createRouteId(): string {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace( /[xy]/g, ( c ) => {
+            // tslint:disable-next-line:no-bitwise
+            const r = Math.random() * 16 | 0;
+            // tslint:disable-next-line:no-bitwise
+            const v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString( 16 );
+        } );
+    }
 }

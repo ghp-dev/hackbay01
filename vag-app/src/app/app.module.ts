@@ -9,13 +9,15 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { DemoComponent } from './demo/demo.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RoutingComponent } from './routing/routing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimelineComponent,
     DemoComponent,
-    HeaderComponent
+    HeaderComponent,
+    RoutingComponent
   ],
   imports: [
     BrowserModule,
