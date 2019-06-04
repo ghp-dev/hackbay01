@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TransitLine } from '../../shared/transit-line.entity';
+import { RoutingRequestEntity } from '../../shared/routing-request.entity'
+import { RoutingInfo} from '../../shared/routing-info.entity'
 
 declare const google: any;
 
@@ -17,15 +19,41 @@ export class RoutingService {
         return new google.maps.DirectionsService();
     }
 
-    public navigate() {
-        return this.getDirectionsService().route( {
-            origin: { lat: 49.450520, lng: 11.080480 },
-            destination: { lat: 49.443056, lng: 11.094571 },
+    public navigate(routingRequestEntitty: RoutingRequestEntity) {
+
+        var routingInfos: RoutingInfo[] = [];
+
+        return new Promise((resolve, reject) => {
+            this.getDirectionsService().route( {
+            origin: { lat: routingRequestEntitty.startLat, lng: routingRequestEntitty.startLong },
+            destination: { lat: routingRequestEntitty.endLat, lng: routingRequestEntitty.endLong },
+            transitOptions: {arrivalTime: routingRequestEntitty.startTime, departureTime: routingRequestEntitty.endTime},
             travelMode: 'TRANSIT'
         }, ( response, status ) => {
-            console.log( response );
-            console.log( status );
-        } );
+            if(status == 'OK')  {
+                response.routes.forEach(routes => {
+                    var entity: RoutingInfo;
+                    entity.vehicleIcons = [];
+                    entity.startTime = routes.legs[0].departure_time;
+                    var gotFirstTransit = false;
+                    routes.legs[0].steps.forEach((step) => {
+                        if (step.travel_mode == 'TRANSIT')
+                        {
+                            if(!gotFirstTransit) {
+                            entity.startStation = step.departure_stop.name;
+                            entity.startTransitLine = step.line.short_name;
+                            gotFirstTransit = true;
+                            }
+                            entity.vehicleIcons.push(step.line.vehicle.icon);
+                        }
+                    });
+                    routingInfos.push(entity);
+                });
+                resolve(routingInfos);
+            } else {
+                reject(status);
+            }
+        } )});
     }
 
     public routeInfo(id: string): TransitLine[] {

@@ -4,4 +4,5 @@ export interface RoutingInfo {
     startTime: Date;
     startStation: string;
     startTransitLine: TransitLine;
+    vehicleIcons: String[];
 }

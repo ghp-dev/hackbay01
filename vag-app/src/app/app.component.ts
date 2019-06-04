@@ -13,8 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private routingService: RoutingService) { }
 
 
-   ngOnInit(): void {
-    this.routingService.navigate();
-  }
+   ngOnInit(): void { }
 }
 
