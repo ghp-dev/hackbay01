@@ -12,7 +12,7 @@
               />
             </div>
             <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end">
-                7°C Sonnig
+                {{ weather.temperature | number: '2.0-0' }}°C {{ weather.iconName }}
             </div>
           </div>
         </mgl-timeline-entry-header>
