@@ -8,10 +8,25 @@ export class VagCapacityService {
 
   constructor() { }
 
-  getState(line: number, direction: string, time: Date): CapacityState {
-    if (line === 44 && direction === 'Nürnberg Hauptbahnhof' && time.getHours() >= 7 && time.getHours() < 9) {
+  getState(line: string, direction: string, time: Date): CapacityState {
+    if (direction === 'Nürnberg Hauptbahnhof' && this.isCommutingTime(time)) {
+      return CapacityState.Red;
+    }
+    if (line === 'U1' && this.isCommutingTime(time)) {
       return CapacityState.Red;
     }
     return CapacityState.Green;
+  }
+
+  private isCommutingTime(time: Date): boolean {
+    if (time.getHours() >= 7 && time.getHours() < 9) {
+      return true;
+    }
+
+    if (time.getHours() >= 16 && time.getHours() < 18) {
+      return true;
+    }
+
+    return false;
   }
 }
