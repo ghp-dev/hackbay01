@@ -1,3 +1,11 @@
+Idee:
+
+Ich sage Dir, wann ich an welchem Ziel sein will.
+Du bringst mich entsprechend meiner Präferenzen komfortabel ans Ziel. 
+Unterstütze mich vorausschauend, wenn ich vom Plan abweiche.
+
+
+
 Feature: Initiale Konfiguration
 
 Szenario:
