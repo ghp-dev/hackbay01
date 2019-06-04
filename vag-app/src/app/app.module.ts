@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { RoutingComponent } from './routing/routing.component';
 import { DecimalPipe } from '@angular/common';
+import { PreferencesComponent } from './preferences/preferences.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { DecimalPipe } from '@angular/common';
     TimelineComponent,
     DemoComponent,
     HeaderComponent,
-    RoutingComponent
+    RoutingComponent,
+    PreferencesComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { DecimalPipe } from '@angular/common';
     MglTimelineModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    FormsModule
   ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent]

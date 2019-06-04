@@ -1,0 +1,20 @@
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      Wohnort:
+    </div>
+    <div class="col-xs-24 col-md-4">
+      <input [(ngModel)]="preferences.home"/>
+    </div>
+  </div>
+  <div class=" row">
+      <div class="col-xs-12 col-md-2">
+        Arbeitsstelle:
+      </div>
+      <div class="col-xs-24 col-md-4">
+        <input [(ngModel)]="preferences.work"/>
+      </div>
+    </div>
+
+    <button [routerLink]="['/']">Zurück</button>
+
