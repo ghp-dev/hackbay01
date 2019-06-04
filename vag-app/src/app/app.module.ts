@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { DemoComponent } from './demo/demo.component';
 import { HeaderComponent } from './header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 import { RoutingComponent } from './routing/routing.component';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { RoutingComponent } from './routing/routing.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MglTimelineModule
+    MglTimelineModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

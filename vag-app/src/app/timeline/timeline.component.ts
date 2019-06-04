@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
 import { RoutingInfo } from '../shared/routing-info.entity';
+import { WeatherService } from '../services/weather/weather.service';
 
 @Component( {
     selector: 'app-timeline',
@@ -12,11 +13,16 @@ export class TimelineComponent implements OnInit {
     private routes: RoutingInfo[] = [];
 
     constructor(
-        private routingService: RoutingService
+        private routingService: RoutingService,
+        private weatherService: WeatherService,
     ) {
     }
 
     ngOnInit() {
+        this.weatherService.fetchWeatherForecastHourly(new Date()).subscribe(value => {
+            console.log(value);
+        });
+
         this.routingService
             .navigate( {
                 startTime: new Date(),
