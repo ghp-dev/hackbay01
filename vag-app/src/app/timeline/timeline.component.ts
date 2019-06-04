@@ -11,7 +11,9 @@ export class TimelineComponent implements OnInit {
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit() {
-    console.log(this.weatherService.fetchWeatherForecastHourly(new Date()));
+    this.weatherService.fetchWeatherForecastHourly(new Date()).subscribe(value => {
+      console.log(value);
+    });
   }
 
 }
