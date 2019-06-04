@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { DemoComponent } from './demo/demo.component';
 import { HeaderComponent } from './header/header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { RoutingComponent } from './routing/routing.component';
 import { DecimalPipe } from '@angular/common';
 
@@ -25,7 +25,8 @@ import { DecimalPipe } from '@angular/common';
     AppRoutingModule,
     BrowserAnimationsModule,
     MglTimelineModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientJsonpModule,
   ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent]
