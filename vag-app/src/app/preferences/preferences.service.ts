@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Preferences } from '../shared/preferences.entity';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,12 @@ export class PreferencesService {
   }
 
   load(): Preferences {
+    if (environment.presentation) {
+      let pref = new Preferences();
+      pref.work = "Rothenburger Straße, Nürnberg";
+      pref.home ="Kachletstraße, Nürnberg";
+      return pref;
+    }
     const preferencesString = window.localStorage.getItem(PreferencesService.StorageKey);
     if (preferencesString) {
       return JSON.parse(preferencesString);
