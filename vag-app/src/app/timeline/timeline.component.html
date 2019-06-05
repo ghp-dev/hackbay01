@@ -12,12 +12,9 @@
                   style="width: 30px; height: 30PX"
               />
             </div>
-            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end">
+            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end; align-items: center">
                 {{ weather.temperature | number: '2.0-0' }}°C
-                <svg>
-                  <title>{{ weather.iconName }}</title>
-                  <use [attr.xlink:href]="'/assets/icons/weather/sunny.svg'"></use>
-                </svg>
+                <img [src]="'../../assets/icons/weather/' + weather.iconName + '.svg'">
             </div>
           </div>
         </mgl-timeline-entry-header>
