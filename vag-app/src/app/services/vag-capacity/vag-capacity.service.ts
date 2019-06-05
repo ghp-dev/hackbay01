@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CapacityState } from './capacity-state';
+import { CapacityRed, CapacityYellow, CapacityGreen } from './capacity-state';
 
 @Injectable({
   providedIn: 'root'
@@ -8,17 +8,17 @@ export class VagCapacityService {
 
   constructor() { }
 
-  getState(line: string, direction: string, time: Date): CapacityState {
+  getState(line: string, direction: string, time: Date): number {
     if (direction === 'Nürnberg Hbf' && this.isCommutingTime(time)) {
-      return CapacityState.Red;
+      return CapacityRed;
     }
     if (line === 'U1' && this.isCommutingTime(time)) {
-      return CapacityState.Red;
+      return CapacityRed;
     }
     if (line === 'U3') {
-      return CapacityState.Yellow;
+      return CapacityYellow;
     }
-    return CapacityState.Green;
+    return CapacityGreen;
   }
 
   private isCommutingTime(time: Date): boolean {
