@@ -58,6 +58,15 @@ export class RoutingService {
                                     name: step.transit.line.short_name,
                                     icon: step.transit.line.vehicle.icon,
                                 } );
+                            } else {
+                                console.dir(step);
+
+                                routingInfo.steps.push( {
+                                    time: new Date(), // TODO
+                                    direction: null,
+                                    name: step.instructions,
+                                    icon: '',
+                                });
                             }
                         } );
 
