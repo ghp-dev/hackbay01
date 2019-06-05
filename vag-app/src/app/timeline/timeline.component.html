@@ -42,7 +42,7 @@
             </div>
           </div>
         </mgl-timeline-entry-content>
-        <mgl-timeline-entry-dot size="60" [class]="'accent'" [ngClass]="getLoadStateClass(route)">
+        <mgl-timeline-entry-dot size="60" [ngClass]="getLoadStateClass(route)">
           &nbsp;&nbsp;{{route.startTime | date:'HH:mm' }}<br/>&nbsp;&nbsp;{{route.endTime | date:'HH:mm' }}
         </mgl-timeline-entry-dot>
     </mgl-timeline-entry>

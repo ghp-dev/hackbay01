@@ -1,6 +1,12 @@
 <div class="headercontainer">
-  <div class="headercontent">
+  <div class="headercontent" style="display: flex; justify-content: space-between;" >
     <h1 class="appname">Timeline-App</h1>
-    <button class="settings" [routerLink]="['/preferences']">Einstellungen</button>
+    <div style="display: flex; flex-direction: row; align-items: center;">
+      <div style="align-content: center; float: right;">
+        <span>90</span>
+        <img src="../../assets/img/save-money.png" style="width: 30px; height: 30px; padding-right: 5px;">
+      </div>
+      <button style="float: right; height: 30%" class="settings" [routerLink]="['/preferences']">Einstellungen</button>
   </div>
+</div>
 </div>
