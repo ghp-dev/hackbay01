@@ -40,6 +40,7 @@ export class RoutingService {
                         const routingInfo = new RoutingInfo();
                         routingInfo.id = this.createRouteId();
                         routingInfo.startTime = routes.legs[ 0 ].departure_time.value;
+                        routingInfo.endTime = routes.legs[0].arrival_time.value;
 
                         routes.legs[ 0 ].steps.forEach( ( step ) => {
                             console.dir( step );
@@ -65,7 +66,7 @@ export class RoutingService {
                                     time: new Date(), // TODO
                                     direction: null,
                                     name: step.instructions,
-                                    icon: '',
+                                    icon: '../../assets/img/walk-icon.png',
                                 });
                             }
                         } );
