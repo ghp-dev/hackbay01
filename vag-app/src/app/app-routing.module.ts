@@ -7,7 +7,7 @@ import { TimelineComponent } from './timeline/timeline.component';
 const routes: Routes = [
   {
     component: RoutingComponent,
-    path: 'routing',
+    path: 'routing/:id',
   },
   {
     component: PreferencesComponent,

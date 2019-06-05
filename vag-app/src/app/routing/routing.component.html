@@ -1,3 +1,19 @@
-<p>
-  routing works!
-</p>
+<div #gmap style="width:100%;height:200px"></div>
+
+<div class="container-fluid" *ngIf="route">
+  <div class="row">
+    <div class="col-6">
+      <div *ngFor="let step of route.steps">
+        <img
+            src="{{ step.icon }}"
+            style="width: 30px; height: 30PX"
+        />
+        {{ step.name }}
+        {{ step.direction }}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
