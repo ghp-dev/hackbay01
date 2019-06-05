@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  presentation: false,
+  presentation: true,
   weather_api_uri: 'https://weather.cit.api.here.com/weather/1.0/report.json?product=forecast_hourly&name=Nuernberg&app_id=KzyL5RErmVvso6pdbObR&app_code=1B5qPTN8--pmg0PXzrVXCg'
 };
 
