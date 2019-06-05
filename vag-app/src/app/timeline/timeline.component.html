@@ -1,5 +1,5 @@
 <mgl-timeline focusOnOpen="true" mobileWidthThreshold="10000">
-    <mgl-timeline-entry *ngFor="let route of routes">
+    <mgl-timeline-entry *ngFor="let route of routes" [class.active]="route.recommendation">
         <mgl-timeline-entry-header>
           <div class="row">
             <div class="col-xs-12 col-md-2">
