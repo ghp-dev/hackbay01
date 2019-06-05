@@ -13,14 +13,18 @@ export class RoutingService {
 
     private routes: Map<string, RoutingInfo> = new Map<string, RoutingInfo>();
 
-    constructor(private decimalPipe: DecimalPipe) {
+    constructor( private decimalPipe: DecimalPipe ) {
     }
 
     public getDirectionsService() {
         return new google.maps.DirectionsService();
     }
 
-    public navigate( routingRequestEntity: RoutingRequestEntity) {
+    public getDirectionsRenderer() {
+        return new google.maps.DirectionsRenderer();
+    }
+
+    public navigate( routingRequestEntity: RoutingRequestEntity ) {
 
         const routingInfos: RoutingInfo[] = [];
 
@@ -36,12 +40,12 @@ export class RoutingService {
                 travelMode: 'TRANSIT'
             }, ( response, status ) => {
                 if (status === 'OK') {
-                    response.routes.forEach( routes => {
+                    response.routes.forEach( (routes, routeIndex) => {
                         let gotFirstTransit = false;
                         const routingInfo = new RoutingInfo();
                         routingInfo.id = this.createRouteId();
                         routingInfo.startTime = routes.legs[ 0 ].departure_time.value;
-                        routingInfo.endTime = routes.legs[0].arrival_time.value;
+                        routingInfo.endTime = routes.legs[ 0 ].arrival_time.value;
 
                         routes.legs[ 0 ].steps.forEach( ( step ) => {
                             console.dir( step );
@@ -62,17 +66,20 @@ export class RoutingService {
                                     type: 'TRANSIT',
                                 } );
                             } else {
-                                console.dir(step);
+                                console.dir( step );
 
                                 routingInfo.steps.push( {
                                     time: new Date(), // TODO
                                     direction: null,
-                                    name: (this.decimalPipe.transform((+step.duration.value) / 60, '1.0-0')) + 'min',
+                                    name: (this.decimalPipe.transform( (+step.duration.value) / 60, '1.0-0' )) + 'min',
                                     type: 'WALKING',
                                     icon: '../../assets/img/walk-icon.png',
-                                });
+                                } );
                             }
                         } );
+
+                        routingInfo.apiResult = response;
+                        routingInfo.routeIndex = routeIndex;
 
                         this.routes.set( routingInfo.id, routingInfo );
                         routingInfos.push( routingInfo );
@@ -83,6 +90,11 @@ export class RoutingService {
                 }
             } );
         } );
+    }
+
+    public getRoute( id: string ): RoutingInfo {
+        console.dir(this.routes);
+        return this.routes.get( id );
     }
 
     public routeInfo( id: string ): TransitLine[] {
