@@ -41,7 +41,6 @@ export class TimelineComponent implements OnInit {
     }
 
     ngOnInit() {
-
         this.weatherService.fetchWeatherForecastHourly(new Date()).subscribe(value => {
             this.weather = value;
         });
