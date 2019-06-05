@@ -40,7 +40,7 @@
               <a [routerLink]="['/routing', route.id]">→ Details</a>
             </div>
           </div>
-          <button class="mat-flat-button" style="float: right; background-color: green; margin-bottom: 5px">Start</button>
+          <button mat-button style="float: right; background-color: green; margin-bottom: 5px">Start</button>
         </mgl-timeline-entry-content>
         <mgl-timeline-entry-dot size="60" [ngClass]="getLoadStateClass(route)">
           &nbsp;&nbsp;{{route.startTime | date:'HH:mm' }}<br/>&nbsp;&nbsp;{{route.endTime | date:'HH:mm' }}
