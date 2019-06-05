@@ -9,5 +9,9 @@ export class RoutingInfo {
     vehicleIcons: string[] = [];
 
     steps: Array<TransitLine> = [];
+
+    apiResult: any = null;
+    routeIndex = 0;
+
     points: number;
 }
