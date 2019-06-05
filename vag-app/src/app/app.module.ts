@@ -16,7 +16,7 @@ import { PreferencesComponent } from './preferences/preferences.component';
 import { OptionViewComponent } from './option-view/option-view.component';
 
 import { ToastrModule } from 'ngx-toastr';
-import { MatButtonModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatFormFieldModule } from '@angular/material';
 import { BikePickupComponent } from './bike-pickup/bike-pickup.component';
 import { RewardSummaryComponent } from './reward-summary/reward-summary.component';
 
@@ -35,6 +35,7 @@ import { RewardSummaryComponent } from './reward-summary/reward-summary.componen
   imports: [
     MatButtonModule,
     MatCardModule,
+    MatFormFieldModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

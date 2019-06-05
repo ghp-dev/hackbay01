@@ -1,20 +1,27 @@
+<div style="display: flex; justify-content: center">
+  <div style="margin-top: 2rem;">
 
-  <div class="row">
-    <div class="col-xs-12 col-md-2">
-      Wohnort:
-    </div>
-    <div class="col-xs-24 col-md-4">
-      <input [(ngModel)]="preferences.home"/>
-    </div>
-  </div>
-  <div class=" row">
-      <div class="col-xs-12 col-md-2">
-        Arbeitsstelle:
+    <div class="row" style="margin-bottom: 1rem;">
+      <div class="" style="width: 5rem;">
+        Wohnort:
       </div>
       <div class="col-xs-24 col-md-4">
-        <input [(ngModel)]="preferences.work"/>
+        <input [(ngModel)]="preferences.home"/>
       </div>
     </div>
-
-    <button [routerLink]="['/']">Zurück</button>
+    <div class="row" style="margin-bottom: 1rem;">
+        <div class="" style="width: 5rem;">
+          Arbeitsstelle:
+        </div>
+        <div class="col-xs-24 col-md-4">
+          <input [(ngModel)]="preferences.work"/>
+        </div>
+      </div>
+    <div class="row">
+      <div style="width: 100%;">
+        <button mat-button style="background-color: lightgray;" [routerLink]="['/']">Speichern</button>
+      </div>
+    </div>
+  </div>
+</div>
 
