@@ -7,11 +7,7 @@ mgl-timeline {
 mgl-timeline-entry-dot {
   display: flex;
   align-items: center;
-  // z-index: 1000;
-  // justify-content: center;
-  // padding-left: 1rem;
   color: white;
-  // background-size: 1800% 1800%;
 }
 
 .mgl-timeline-entry-dot-red {
@@ -26,8 +22,14 @@ mgl-timeline-entry-dot {
   background: orange !important;
 }
 
-.expanded mgl-timeline-entry-header {
-  color: white;
+.expanded {
+  mgl-timeline-entry-header {
+    color: white;
+  }
+
+  .vehicleIcons {
+    display: none;
+  }
 }
 
 
