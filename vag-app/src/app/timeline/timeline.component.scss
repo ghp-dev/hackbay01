@@ -4,6 +4,14 @@ mgl-timeline {
   background: transparent;
 }
 
+
+.stuff{
+  background-color: red !important;
+}
+.stuff-animated{
+  background-color: #123456 !important;
+}
+
 mgl-timeline-entry-dot {
   display: flex;
   align-items: center;
