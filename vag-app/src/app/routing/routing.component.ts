@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
 import { RoutingInfo } from '../shared/routing-info.entity';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from 'ngx-toastr';
 
 declare const google: any
 
