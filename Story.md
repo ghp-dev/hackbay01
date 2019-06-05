@@ -11,8 +11,8 @@ Anstatt, dass ich dies alles selbst berücksichtigen muss, hilft mir MY-EN-ERGIE
 1. Ich werde zuverlässig zum spätestens Zeitpunkt geweckt, um mein Ziel bequem zu erreichen.
 2. in der Timeline der App sehe ich, die nächsten Verbindung und die von App aktuell gewählte und bin glücklich.
 3. 5 Minuten bevor ich aufbrechen, erinnert mich die App
-4. Sobald ich das Haus verlasse, sehe ich in der App die Route.U-
-(5. ich nehme einen Kaffee ToGo/Brötchen beim Bäcker mit, Bezahlung erfolgt durch App)
+4. Sobald ich das Haus verlasse, sehe ich in der App die Route.U
+5. ich nehme einen Kaffee ToGo/Brötchen beim Bäcker mit, Bezahlung erfolgt durch App
 6. Ich steige in Bus ein, App Status aktualisiert sich.
 7. U-Bahn fällt aus => Notification über Alternative:
 8. Alternativen werden angezeigt: Wahl mit Fahrrad wegen meisten Bonuspunkten => Geschichte: Entsperrung+Bezahlung durch App per NFC
