@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TransitLine } from '../../shared/transit-line.entity';
+import { TransitLine, TransitType_Walking, TransitType_Transit } from '../../shared/transit-line.entity';
 import { RoutingRequestEntity } from '../../shared/routing-request.entity';
 import { RoutingInfo } from '../../shared/routing-info.entity';
 import { DecimalPipe } from '@angular/common';
@@ -65,7 +65,7 @@ export class RoutingService {
                                     direction: step.transit.headsign,
                                     name: step.transit.line.short_name,
                                     icon: step.transit.line.vehicle.icon,
-                                    type: 'TRANSIT',
+                                    type: TransitType_Transit,
                                 } );
                             } else {
                                 console.dir( step );
@@ -74,7 +74,7 @@ export class RoutingService {
                                     time: new Date(), // TODO
                                     direction: null,
                                     name: (this.decimalPipe.transform( (+step.duration.value) / 60, '1.0-0' )) + 'min',
-                                    type: 'WALKING',
+                                    type: TransitType_Walking,
                                     icon: '../../assets/img/walk-icon.png',
                                 } );
                             }

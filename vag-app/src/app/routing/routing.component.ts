@@ -3,6 +3,7 @@ import { RoutingService } from '../services/routing/routing.service';
 import { RoutingInfo } from '../shared/routing-info.entity';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { TransitType_Transit } from '../shared/transit-line.entity';
 
 declare const google: any
 declare const window: any;
@@ -56,7 +57,7 @@ export class RoutingComponent implements OnInit {
 
     private initToastr() {
         this.route.steps
-            .filter((step) => step.type === 'TRANSIT')
+            .filter((step) => step.type === TransitType_Transit)
             .forEach((step, index) => {
                 setTimeout(() => {
                     this.toastrService.info('Linie ' + step.name + ' in 5 Minuten', 'Umsteigen', {

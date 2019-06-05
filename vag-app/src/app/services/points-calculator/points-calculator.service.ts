@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Weather } from 'src/app/shared/weather.entity';
 import { RoutingInfo } from 'src/app/shared/routing-info.entity';
 import { CapacityRed, CapacityYellow, CapacityGreen } from 'src/app/services/vag-capacity/capacity-state';
+import { type } from 'os';
+import { TransitType_Walking, TransitType_Transit, TransitType_Bike, TransitType_Taxi } from 'src/app/shared/transit-line.entity';
 
 @Injectable({
   providedIn: 'root',
@@ -14,30 +16,50 @@ export class PointsCalculatorService {
   calculatePoints(weatherData: Weather, routeData: RoutingInfo, capacityData: number): number {
     console.log('Points-Calculator: Init-State');
     let points = 0;
-    // Info: Wetterdaten nur für Berechnung der Punkte für Autofahrten relevant:
-    //        (je wärmer, desto mehr muss das Auto kühlen, desto mehr Kraftstoff wird verbraucht)
+    // TODO: Wetterdaten nur für Berechnung der Punkte für Autofahrten relevant:
+    //        (je wärmer, desto mehr muss das Auto kühlen, umso mehr Kraftstoff wird verbraucht)
 
-    // Points für capacityData
-    switch (capacityData) {
-      case CapacityGreen:
-        points += 80;
-        break;
-
-      case CapacityYellow:
-        points += 40;
-        break;
-
-      case CapacityRed:
-        points += 10;
-        break;
-
-      default:
-        points += 100;
-    }
+    // Points für Kapazitätsdaten
+    points += this.pointsForCapacity(capacityData);
 
     // Points für Routen-Schritte-Verkehrsmittel
-
+    routeData.steps.forEach(item => points += this.pointsForType(item.type));
 
     return points;
+  }
+
+  private pointsForCapacity(capacity: number): number {
+    switch (capacity) {
+      case CapacityGreen:
+        return 8;
+
+      case CapacityYellow:
+        return 4;
+
+      case CapacityRed:
+        return 1;
+
+      default:
+        return 0;
+    }
+  }
+
+  private pointsForType(typeName: string): number {
+    switch (typeName) {
+      case TransitType_Walking:
+        return 8;
+
+      case TransitType_Bike:
+        return 7;
+
+      case TransitType_Transit:
+        return 5;
+
+      case TransitType_Taxi:
+        return 2;
+
+      default:
+        return 0;
+    }
   }
 }

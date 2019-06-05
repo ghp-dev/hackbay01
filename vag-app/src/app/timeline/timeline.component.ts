@@ -6,7 +6,7 @@ import { Weather } from '../shared/weather.entity';
 import { LoadService } from '../services/loads/load.service';
 import { CapacityRed, CapacityYellow, CapacityGreen } from '../services/vag-capacity/capacity-state';
 import { PreferencesService } from '../preferences/preferences.service';
-import { TransitLine } from '../shared/transit-line.entity';
+import { TransitLine, TransitType_Walking } from '../shared/transit-line.entity';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PointsCalculatorService } from '../services/points-calculator/points-calculator.service';
@@ -118,7 +118,7 @@ export class TimelineComponent implements OnInit {
         case CapacityYellow:
           return 'mgl-timeline-entry-dot-yellow';
         default:
-          if (step.type === 'WALKING') {
+          if (step.type === TransitType_Walking) {
             return '';
           }
           return 'mgl-timeline-entry-dot-green';
