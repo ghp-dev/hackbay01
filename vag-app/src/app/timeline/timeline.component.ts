@@ -45,7 +45,7 @@ export class TimelineComponent implements OnInit {
 
 
                     results.forEach(item => item.steps = this.loadService.getLoad(item.id));
-                    this.routes = results;
+                    this.routes = results.sort((a,b) => a.startTime < b.startTime ? -1 : 1);
                     console.dir(this.routes);
                 },
                 ( status ) => {
