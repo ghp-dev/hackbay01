@@ -6,3 +6,8 @@ export interface TransitLine {
     loadState?: number;
     type: string;
 }
+
+export const TransitType_Walking = 'WALKING';
+export const TransitType_Transit = 'TRANSIT';
+export const TransitType_Bike = 'BIKE';
+export const TransitType_Taxi = 'TAXI';

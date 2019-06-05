@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
 import { RoutingInfo } from '../shared/routing-info.entity';
 import { WeatherService } from '../services/weather/weather.service';
@@ -6,12 +6,13 @@ import { Weather } from '../shared/weather.entity';
 import { LoadService } from '../services/loads/load.service';
 import { CapacityRed, CapacityYellow, CapacityGreen } from '../services/vag-capacity/capacity-state';
 import { PreferencesService } from '../preferences/preferences.service';
-import { TransitLine } from '../shared/transit-line.entity';
 import { Router, RoutesRecognized } from '@angular/router';
+import { TransitLine, TransitType_Walking } from '../shared/transit-line.entity';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { PointsCalculatorService } from '../services/points-calculator/points-calculator.service';
 import { isNgTemplate } from '@angular/compiler';
+import { animate, animation, style } from '@angular/animations';
 
 @Component( {
     selector: 'app-timeline',
@@ -20,6 +21,7 @@ import { isNgTemplate } from '@angular/compiler';
 } )
 export class TimelineComponent implements OnInit {
 
+  private animation;
   private travelDate: Date = environment.presentation ? new Date(2019, 5, 6, 7, 50) : new Date();
     private routes: any[] = [];
     private weather: Weather = new Weather('0', 'sunny');
@@ -32,7 +34,10 @@ export class TimelineComponent implements OnInit {
         private preferencesService: PreferencesService,
         private router: Router,
         private toastrService: ToastrService
-    ) {
+    ) { }
+
+    doSth(ref: ElementRef){
+      ref.nativeElement.class = 'stuff-animated';
     }
 
     triggerLeaveHomeToast() {
@@ -127,7 +132,7 @@ export class TimelineComponent implements OnInit {
         case CapacityYellow:
           return 'mgl-timeline-entry-dot-yellow';
         default:
-          if (step.type === 'WALKING') {
+          if (step.type === TransitType_Walking) {
             return '';
           }
           return 'mgl-timeline-entry-dot-green';
