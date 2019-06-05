@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WalletService } from '../services/wallet/wallet.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  private balance: string;
 
-  constructor() { }
+  constructor(private walletService: WalletService) { }
 
   ngOnInit() {
+    this.balance = this.updateWalletBalance();
+  }
+
+  updateWalletBalance(): string {
+    return this.balance = this.walletService.getBalance().toString();
   }
 
 }

@@ -58,7 +58,7 @@
               <a [routerLink]="['/routing', route.id]">→ Details</a>
             </div>
           </div>
-          <button mat-button (click)="doSth()" class="stuff" style="float: right; background-color: green; margin-bottom: 5px">Start</button>
+          <button mat-button (click)="startRoute(route.points)" class="stuff" style="float: right; background-color: green; margin-bottom: 5px">Start</button>
         </mgl-timeline-entry-content>
         <mgl-timeline-entry-dot size="70" [ngClass]="getLoadStateClass(route)">
           &nbsp;&nbsp;&nbsp;{{route.startTime | date:'HH:mm' }}
