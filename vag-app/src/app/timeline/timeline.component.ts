@@ -6,7 +6,7 @@ import { Weather } from '../shared/weather.entity';
 import { LoadService } from '../services/loads/load.service';
 import { CapacityState } from '../services/vag-capacity/capacity-state';
 import { PreferencesService } from '../preferences/preferences.service';
-import { TransitLine, TransitType } from '../shared/transit-line.entity';
+import { TransitLine } from '../shared/transit-line.entity';
 import { Router } from '@angular/router';
 
 @Component( {
