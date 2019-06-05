@@ -3,8 +3,8 @@ import { RoutingService } from '../services/routing/routing.service';
 import { RoutingInfo } from '../shared/routing-info.entity';
 import { WeatherService } from '../services/weather/weather.service';
 import { Weather } from '../shared/weather.entity';
-import { LoadService } from '../loads/load.service';
-import { CapacityState } from '../vag-capacity/capacity-state';
+import { LoadService } from '../services/loads/load.service';
+import { CapacityState } from '../services/vag-capacity/capacity-state';
 import { PreferencesService } from '../preferences/preferences.service';
 import { TransitLine } from '../shared/transit-line.entity';
 

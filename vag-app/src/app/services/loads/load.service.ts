@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {VagCapacityService} from '../vag-capacity/vag-capacity.service';
-import {RoutingService} from '../services/routing/routing.service';
+import {RoutingService} from '../routing/routing.service';
 
 @Injectable({
   providedIn: 'root'
