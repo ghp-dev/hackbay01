@@ -21,7 +21,9 @@ export class RoutingService {
     }
 
     public getDirectionsRenderer() {
-        return new google.maps.DirectionsRenderer();
+        return new google.maps.DirectionsRenderer({
+            suppressInfoWindows: true,
+        });
     }
 
     public navigate( routingRequestEntity: RoutingRequestEntity ) {
