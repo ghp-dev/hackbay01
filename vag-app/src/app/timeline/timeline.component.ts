@@ -47,17 +47,18 @@ export class TimelineComponent implements OnInit {
                 .then(
                     ( results: RoutingInfo[] ) => {
 
-                    console.dir( results );
+                        console.dir( results );
 
 
-                    results.forEach(item => item.steps = this.loadService.getLoad(item.id));
-                    this.routes = results.sort((a, b) => a.startTime < b.startTime ? -1 : 1);
-                    console.dir(this.routes);
-                },
-                ( status ) => {
-                    console.error( status );
-                }
-            );
+                        results.forEach( item => item.steps = this.loadService.getLoad( item.id ) );
+                        this.routes = results.sort( ( a, b ) => a.startTime < b.startTime ? -1 : 1 );
+                        console.dir( this.routes );
+                    },
+                    ( status ) => {
+                        console.error( status );
+                    }
+                );
+        }
     }
 
     loadState(route: RoutingInfo): CapacityState {
