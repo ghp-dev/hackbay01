@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Weather } from 'src/app/shared/weather.entity';
 import { RoutingInfo } from 'src/app/shared/routing-info.entity';
 import { CapacityRed, CapacityYellow, CapacityGreen } from 'src/app/services/vag-capacity/capacity-state';
-import { type } from 'os';
 import { TransitType_Walking, TransitType_Transit, TransitType_Bike, TransitType_Taxi } from 'src/app/shared/transit-line.entity';
 
 @Injectable({
@@ -14,10 +13,10 @@ export class PointsCalculatorService {
   }
 
   calculatePoints(weatherData: Weather, routeData: RoutingInfo, capacityData: number): number {
-    console.log('Points-Calculator: Init-State');
     let points = 0;
-    // TODO: Wetterdaten nur für Berechnung der Punkte für Autofahrten relevant:
-    //        (je wärmer, desto mehr muss das Auto kühlen, umso mehr Kraftstoff wird verbraucht)
+
+    // Points für Wetter (Energieverbrauch Klimaanlage)
+    routeData.steps.forEach(item => points += this.pointsForWeather(item.type, weatherData));
 
     // Points für Kapazitätsdaten
     points += this.pointsForCapacity(capacityData);
@@ -61,5 +60,27 @@ export class PointsCalculatorService {
       default:
         return 0;
     }
+  }
+
+  private pointsForWeather(typeName: string, weather: Weather): number {
+    if (parseInt(weather.temperature, 10) > 23) {
+      switch (typeName) {
+        case TransitType_Walking:
+          return 5;
+
+        case TransitType_Bike:
+          return 5;
+
+        case TransitType_Transit:
+          return 2;
+
+        case TransitType_Taxi:
+          return 0;
+
+        default:
+          return 0;
+      }
+    }
+    return 0;
   }
 }
