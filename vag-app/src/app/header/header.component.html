@@ -7,7 +7,7 @@
     </a>
     <div style="display: flex; flex-direction: row; align-items: center;">
       <div style="display: flex; align-items: center">
-        <span>90</span>
+        <span [ngClass]="updateWalletBalance()">{{ this.balance }}</span>
         <img alt="save-money" src="../../assets/img/beehive_white.svg" style="width: 30px; height: 30px; margin: 0 0.5rem; padding-bottom: 0.5rem">
       </div>
       <button style="margin: 0 1rem; padding: 0.5rem" class="settings" [routerLink]="['/preferences']">Einstellungen</button>

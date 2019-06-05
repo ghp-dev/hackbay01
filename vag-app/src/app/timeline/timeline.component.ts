@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { PointsCalculatorService } from '../services/points-calculator/points-calculator.service';
 import { isNgTemplate } from '@angular/compiler';
 import { animate, animation, style } from '@angular/animations';
+import { WalletService } from '../services/wallet/wallet.service';
 
 @Component( {
     selector: 'app-timeline',
@@ -33,7 +34,8 @@ export class TimelineComponent implements OnInit {
         private pointsCalculatorService: PointsCalculatorService,
         private preferencesService: PreferencesService,
         private router: Router,
-        private toastrService: ToastrService
+        private toastrService: ToastrService,
+        private walletService: WalletService
     ) { }
 
     doSth(ref: ElementRef){
@@ -138,5 +140,9 @@ export class TimelineComponent implements OnInit {
           }
           return 'mgl-timeline-entry-dot-green';
       }
+    }
+
+    startRoute(points: number) {
+      this.walletService.addPoints(points);
     }
 }
