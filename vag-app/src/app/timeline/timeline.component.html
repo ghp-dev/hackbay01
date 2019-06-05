@@ -17,7 +17,10 @@
             </div>
             <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end; align-items: center">
                 {{ weather.temperature | number: '2.0-0' }}°C
-                <img [src]="'../../assets/icons/weather/' + weather.iconName + '.svg'">
+                <svg style="height: 2rem; width: 2rem; margin-left: 0.6rem">
+                  <title>{{ weather.iconName }}</title>
+                  <use [attr.xlink:href]="'../../assets/icons/weather/' + weather.iconName + '.svg#' + weather.iconName"></use>
+                </svg>
             </div>
           </div>
         </mgl-timeline-entry-header>
