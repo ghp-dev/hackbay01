@@ -4,16 +4,23 @@
           <div class="row">
             <div class="col-xs-12 col-md-2">
             </div>
-            <div class="col-xs-12 col-md-7">
+            <div class="col-xs-12 col-md-7" style="display: flex; align-items: center; justify-content: center">
               {{route.startStation}}
-              <img
-                  *ngFor="let icon of route.vehicleIcons"
-                  src="{{ icon }}"
-                  style="width: 30px; height: 30PX"
-              />
+              <div class="vehicleIcons">
+                &nbsp;
+                <img
+                    *ngFor="let icon of route.vehicleIcons"
+                    src="{{ icon }}"
+                    style="width: 1.3rem; height: 1.3rem"
+                />
+              </div>
             </div>
-            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end">
-                {{ weather.temperature | number: '2.0-0' }}°C {{ weather.iconName }}
+            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end; align-items: center">
+                {{ weather.temperature | number: '2.0-0' }}°C
+                <svg style="height: 2rem; width: 2rem; margin-left: 0.6rem">
+                  <title>{{ weather.iconName }}</title>
+                  <use [attr.xlink:href]="'../../assets/icons/weather/' + weather.iconName + '.svg#' + weather.iconName"></use>
+                </svg>
             </div>
           </div>
         </mgl-timeline-entry-header>
@@ -40,13 +47,19 @@
             <div class="col-xs-12 col-md-9" *ngIf="step.loadState >= 60">
                 • Erhöhte Auslastung der Linie {{ step.name }}
             </div>
-            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end" *ngIf="step.loadState >= 60">
-                → Details
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-md-3">
+              <a [routerLink]="['/routing', route.id]">→ Details</a>
             </div>
           </div>
+          <button mat-button style="float: right; background-color: green; margin-bottom: 5px">Start</button>
         </mgl-timeline-entry-content>
         <mgl-timeline-entry-dot size="60" [ngClass]="getLoadStateClass(route)">
           &nbsp;&nbsp;{{route.startTime | date:'HH:mm' }}<br/>&nbsp;&nbsp;{{route.endTime | date:'HH:mm' }}
         </mgl-timeline-entry-dot>
     </mgl-timeline-entry>
 </mgl-timeline>
+<div (click)="triggerLeaveHomeToast()" style="width:100px; height: 100px">
+
+</div>

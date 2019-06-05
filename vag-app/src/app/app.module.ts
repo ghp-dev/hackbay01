@@ -13,7 +13,8 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { RoutingComponent } from './routing/routing.component';
 import { DecimalPipe } from '@angular/common';
 import { PreferencesComponent } from './preferences/preferences.component';
-import { ToastrModule } from "ngx-toastr";
+import { ToastrModule } from 'ngx-toastr';
+import { MatButtonModule, MatCardModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { ToastrModule } from "ngx-toastr";
     PreferencesComponent
   ],
   imports: [
+    MatButtonModule,
+    MatCardModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

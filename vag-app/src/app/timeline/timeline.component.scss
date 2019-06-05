@@ -7,11 +7,7 @@ mgl-timeline {
 mgl-timeline-entry-dot {
   display: flex;
   align-items: center;
-  // z-index: 1000;
-  // justify-content: center;
-  // padding-left: 1rem;
   color: white;
-  // background-size: 1800% 1800%;
 }
 
 .points {
@@ -21,19 +17,25 @@ mgl-timeline-entry-dot {
 }
 
 .mgl-timeline-entry-dot-red {
-  background: linear-gradient(124deg, darkred, darkred) !important;
+  background: darkred !important;
 }
 
 .mgl-timeline-entry-dot-green {
-  background: linear-gradient(124deg, green, green) !important;
+  background: green !important;
 }
 
 .mgl-timeline-entry-dot-yellow {
-  background: linear-gradient(124deg, yellow, yellow) !important;
+  background: orange !important;
 }
 
-.expanded mgl-timeline-entry-header {
-  color: white;
+.expanded {
+  mgl-timeline-entry-header {
+    color: white;
+  }
+
+  .vehicleIcons {
+    display: none;
+  }
 }
 
 
