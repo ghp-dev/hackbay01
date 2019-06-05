@@ -4,7 +4,7 @@ import { RoutingInfo } from '../shared/routing-info.entity';
 import { WeatherService } from '../services/weather/weather.service';
 import { Weather } from '../shared/weather.entity';
 import { LoadService } from '../services/loads/load.service';
-import { CapacityState } from '../services/vag-capacity/capacity-state';
+import { CapacityRed, CapacityYellow, CapacityGreen } from '../services/vag-capacity/capacity-state';
 import { PreferencesService } from '../preferences/preferences.service';
 import { TransitLine } from '../shared/transit-line.entity';
 import { Router } from '@angular/router';
@@ -61,14 +61,14 @@ export class TimelineComponent implements OnInit {
         }
     }
 
-    loadState(route: RoutingInfo): CapacityState {
-      let state = CapacityState.Green;
+    loadState(route: RoutingInfo): number {
+      let state = CapacityGreen;
 
       route.steps.forEach(step => {
-        if (step.loadState === CapacityState.Red) {
-          state = CapacityState.Red;
-        } else if (step.loadState === CapacityState.Yellow && state === CapacityState.Green) {
-          state = CapacityState.Yellow;
+        if (step.loadState === CapacityRed) {
+          state = CapacityRed;
+        } else if (step.loadState === CapacityYellow && state === CapacityGreen) {
+          state = CapacityYellow;
         }
       });
 
@@ -77,9 +77,9 @@ export class TimelineComponent implements OnInit {
 
     getLoadStateClass(route: RoutingInfo): string {
       switch (this.loadState(route)) {
-        case CapacityState.Red:
+        case CapacityRed:
           return 'mgl-timeline-entry-dot-red';
-        case CapacityState.Yellow:
+        case CapacityYellow:
           return 'mgl-timeline-entry-dot-yellow';
         default:
             return 'mgl-timeline-entry-dot-green';
@@ -88,12 +88,12 @@ export class TimelineComponent implements OnInit {
 
     getLoadStateClassOfStep(step: TransitLine): string {
       switch (step.loadState) {
-        case CapacityState.Red:
+        case CapacityRed:
           return 'mgl-timeline-entry-dot-red';
-        case CapacityState.Yellow:
+        case CapacityYellow:
           return 'mgl-timeline-entry-dot-yellow';
         default:
-          if (step.type === TransitType.WALKING) {
+          if (step.type === 'WALKING') {
             return '';
           }
           return 'mgl-timeline-entry-dot-green';

@@ -29,11 +29,11 @@
             </div>
           </div>
           <hr />
-          <div class="row">
-            <div class="col-xs-12 col-md-9">
-                • Behinderungen durch Berufsverkehr
+          <div class="row" *ngFor="let step of route.steps">
+            <div class="col-xs-12 col-md-9" *ngIf="step.loadState >= 60">
+                • Erhöhte Auslastung der Linie {{ step.name }}
             </div>
-            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end">
+            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end" *ngIf="step.loadState >= 60">
                 → Details
             </div>
           </div>
