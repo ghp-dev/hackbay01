@@ -12,6 +12,5 @@ export class RoutingInfo {
 
     apiResult: any = null;
     routeIndex = 0;
-
     points: number;
 }
