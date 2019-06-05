@@ -9,6 +9,7 @@
               <img
                   *ngFor="let icon of route.vehicleIcons"
                   src="{{ icon }}"
+                  style="width: 30px; height: 30PX"
               />
             </div>
             <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end">
@@ -21,6 +22,7 @@
             <div *ngFor="let step of route.steps; let i = index">
               <img
                   src="{{ step.icon }}"
+                  style="width: 30px; height: 30PX"
               />
               <span [ngClass]="getLoadStateClassOfStep(step)">{{ step.name }}</span>
               <span *ngIf="i < route.steps.length - 1"> → </span>
