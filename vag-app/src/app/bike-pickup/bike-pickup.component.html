@@ -1,32 +1,34 @@
-<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
-<div *ngIf="isQrCode; else grabTheBike">
-  <div class="row">
-    <div class="col" >
-      <button mat-stroked-button style="margin: 5px" >
-        <img src="../../assets/qr-code.png" height=256><br>
-
-      </button>
-    </div>
-  </div>
+<div style="display: flex; justify-content: center">
+  <div style="margin-top: 2rem;">
+    <div *ngIf="isQrCode; else grabTheBike">
       <div class="row">
-    <div class="col" >
+        <div class="col">
+          <button mat-stroked-button style="margin: 5px; padding: 1rem;">
+            <img src="../../assets/qr-code.png" height=256><br>
 
-        <button mat-raised-button color="primary" (click)="releaseBike()">Entsperren</button>
+          </button>
+        </div>
+      </div>
+          <div class="row">
+        <div class="col" style="width: 100%; margin: 0.5rem;">
+
+            <button mat-raised-button color="primary" style="width: 100%;" (click)="releaseBike()">Entsperren</button>
+        </div>
+      </div>
     </div>
+    <ng-template #grabTheBike>
+      <div class="row">
+        <div class="col">
+          <button mat-stroked-button style="margin: 5px">
+            <img src="../../assets/lock.svg" height=256><br>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <img src="../../assets/done.svg" [routerLink]="['/reward-summary']">
+        </div>
+      </div>
+    </ng-template>
   </div>
-</div>
-  <ng-template #grabTheBike>
-    <div class="row">
-      <div class="col" >
-        <button mat-stroked-button style="margin: 5px" >
-          <img src="../../assets/lock.svg" height=256><br>
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col" >
-        <img src="../../assets/done.svg" [routerLink]="['/reward-summary']">
-      </div>
-    </div>
-  </ng-template>
 </div>
