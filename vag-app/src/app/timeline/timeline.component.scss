@@ -12,6 +12,10 @@ mgl-timeline {
   background-color: #123456 !important;
 }
 
+.active {
+  outline: 8px solid green;
+}
+
 mgl-timeline-entry-dot {
   display: flex;
   align-items: center;
