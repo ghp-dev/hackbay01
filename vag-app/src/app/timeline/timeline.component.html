@@ -22,7 +22,7 @@
               <img
                   src="{{ step.icon }}"
               />
-              {{ step.name }}
+              <span [ngClass]="getLoadStateClassOfStep(step)">{{ step.name }}</span>
               <span *ngIf="i < route.steps.length - 1"> → </span>
             </div>
           </div>

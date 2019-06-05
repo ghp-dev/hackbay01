@@ -6,6 +6,7 @@ import { Weather } from '../shared/weather.entity';
 import { LoadService } from '../loads/load.service';
 import { CapacityState } from '../vag-capacity/capacity-state';
 import { PreferencesService } from '../preferences/preferences.service';
+import { TransitLine } from '../shared/transit-line.entity';
 
 @Component( {
     selector: 'app-timeline',
@@ -58,9 +59,9 @@ export class TimelineComponent implements OnInit {
       let state = CapacityState.Green;
 
       route.steps.forEach(step => {
-        if (step["loadState"] === CapacityState.Red) {
+        if (step['loadState'] === CapacityState.Red) {
           state = CapacityState.Red;
-        } else if(step["loadState"] === CapacityState.Yellow && state === CapacityState.Green) {
+        } else if(step['loadState'] === CapacityState.Yellow && state === CapacityState.Green) {
           state = CapacityState.Yellow;
         }
       });
@@ -70,6 +71,17 @@ export class TimelineComponent implements OnInit {
 
     getLoadStateClass(route: RoutingInfo): string {
       switch(this.loadState(route)) {
+        case CapacityState.Red:
+          return 'mgl-timeline-entry-dot-red';
+        case CapacityState.Yellow:
+          return 'mgl-timeline-entry-dot-yellow';
+        default:
+            return 'mgl-timeline-entry-dot-green';
+      }
+    }
+
+    getLoadStateClassOfStep(step: TransitLine): string {
+      switch(step['loadState']) {
         case CapacityState.Red:
           return 'mgl-timeline-entry-dot-red';
         case CapacityState.Yellow:
