@@ -8,7 +8,7 @@ import { CapacityRed, CapacityYellow, CapacityGreen } from '../services/vag-capa
 import { PreferencesService } from '../preferences/preferences.service';
 import { TransitLine } from '../shared/transit-line.entity';
 import { Router } from '@angular/router';
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from 'ngx-toastr';
 
 @Component( {
     selector: 'app-timeline',
@@ -84,15 +84,24 @@ export class TimelineComponent implements OnInit {
       return state;
     }
 
-    getLoadStateClass(route: RoutingInfo): string {
+    getLoadStateClass(route: RoutingInfo) {
+      const classes = {accent: true};
       switch (this.loadState(route)) {
         case CapacityRed:
-          return 'mgl-timeline-entry-dot-red';
+          classes['mgl-timeline-entry-dot-red'] = true;
+          break;
         case CapacityYellow:
-          return 'mgl-timeline-entry-dot-yellow';
+          classes['mgl-timeline-entry-dot-yellow'] = true;
+          break;
+        case CapacityGreen:
+          classes['mgl-timeline-entry-dot-green'] = true;
+          break;
         default:
-            return 'mgl-timeline-entry-dot-green';
+          // tslint:disable-next-line:no-string-literal
+            classes['accent'] = true;
       }
+
+      return classes;
     }
 
     getLoadStateClassOfStep(step: TransitLine): string {
