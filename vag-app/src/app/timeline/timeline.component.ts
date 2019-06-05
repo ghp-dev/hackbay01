@@ -7,6 +7,7 @@ import { LoadService } from '../services/loads/load.service';
 import { CapacityState } from '../services/vag-capacity/capacity-state';
 import { PreferencesService } from '../preferences/preferences.service';
 import { TransitLine } from '../shared/transit-line.entity';
+import { Router } from '@angular/router';
 
 @Component( {
     selector: 'app-timeline',
@@ -22,7 +23,8 @@ export class TimelineComponent implements OnInit {
         private routingService: RoutingService,
         private weatherService: WeatherService,
         private loadService: LoadService,
-        private preferencesService: PreferencesService
+        private preferencesService: PreferencesService,
+        private router: Router
     ) {
     }
 
@@ -33,26 +35,30 @@ export class TimelineComponent implements OnInit {
 
         const preferences = this.preferencesService.load();
 
-        this.routingService
-            .navigate( {
-                startTime: new Date(),
-                startAddress: preferences.home,
-                endAddress: preferences.work,
-            } )
-            .then(
-                ( results: RoutingInfo[] ) => {
+        if (!preferences.home || !preferences.work) {
+            this.router.navigate(['/preferences']);
+        } else {
+            this.routingService
+                .navigate( {
+                    startTime: new Date(),
+                    startAddress: preferences.home,
+                    endAddress: preferences.work,
+                } )
+                .then(
+                    ( results: RoutingInfo[] ) => {
 
-                    console.dir( results );
+                        console.dir( results );
 
 
-                    results.forEach(item => item.steps = this.loadService.getLoad(item.id));
-                    this.routes = results.sort((a,b) => a.startTime < b.startTime ? -1 : 1);
-                    console.dir(this.routes);
-                },
-                ( status ) => {
-                    console.error( status );
-                }
-            );
+                        results.forEach( item => item.steps = this.loadService.getLoad( item.id ) );
+                        this.routes = results.sort( ( a, b ) => a.startTime < b.startTime ? -1 : 1 );
+                        console.dir( this.routes );
+                    },
+                    ( status ) => {
+                        console.error( status );
+                    }
+                );
+        }
     }
 
     loadState(route: RoutingInfo): CapacityState {
