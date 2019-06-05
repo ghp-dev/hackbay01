@@ -69,15 +69,23 @@ export class TimelineComponent implements OnInit {
       return state;
     }
 
-    getLoadStateClass(route: RoutingInfo): string {
+    getLoadStateClass(route: RoutingInfo) {
+      const classes = {accent: true};
       switch (this.loadState(route)) {
         case CapacityState.Red:
-          return 'mgl-timeline-entry-dot-red';
+          classes['mgl-timeline-entry-dot-red'] = true;
+          break;
         case CapacityState.Yellow:
-          return 'mgl-timeline-entry-dot-yellow';
+          classes['mgl-timeline-entry-dot-yellow'] = true;
+          break;
+        case CapacityState.Green:
+          classes['mgl-timeline-entry-dot-green'] = true;
+          break;
         default:
-            return 'mgl-timeline-entry-dot-green';
+            classes['accent'] = true;
       }
+
+      return classes;
     }
 
     getLoadStateClassOfStep(step: TransitLine): string {
