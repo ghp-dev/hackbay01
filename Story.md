@@ -15,7 +15,7 @@ Anstatt, dass ich dies alles selbst berücksichtigen muss, hilft mir MY-EN-ERGIE
 (5. ich nehme einen Kaffee ToGo/Brötchen beim Bäcker mit, Bezahlung erfolgt durch App)
 6. Ich steige in Bus ein, App Status aktualisiert sich.
 7. U-Bahn fällt aus => Notification über Alternative:
-8. Alternativen werden angezeigt: Wahl mit Fahrrad wegen meisten Bonuspunktenhttps://github.com/ghp-dev/hackbay01/blob/story/Story.md => Geschichte: Entsperrung+Bezahlung durch App per NFC
+8. Alternativen werden angezeigt: Wahl mit Fahrrad wegen meisten Bonuspunkten => Geschichte: Entsperrung+Bezahlung durch App per NFC
 9. Ich komme entspannt und rechtzeitig an
 
 
