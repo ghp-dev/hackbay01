@@ -5,6 +5,7 @@ import { PreferencesComponent } from './preferences/preferences.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import {OptionViewComponent} from './option-view/option-view.component';
 import {BikePickupComponent} from './bike-pickup/bike-pickup.component';
+import {RewardSummaryComponent} from './reward-summary/reward-summary.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     component: BikePickupComponent,
     path: 'pickup'
+  }
+  ,
+  {
+    component: RewardSummaryComponent,
+    path: 'reward-summary'
   }
   ,
   {

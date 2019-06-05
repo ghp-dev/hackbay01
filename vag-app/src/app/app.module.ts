@@ -18,6 +18,7 @@ import { OptionViewComponent } from './option-view/option-view.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MatButtonModule, MatCardModule } from '@angular/material';
 import { BikePickupComponent } from './bike-pickup/bike-pickup.component';
+import { RewardSummaryComponent } from './reward-summary/reward-summary.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BikePickupComponent } from './bike-pickup/bike-pickup.component';
     RoutingComponent,
     PreferencesComponent,
     OptionViewComponent,
-    BikePickupComponent
+    BikePickupComponent,
+    RewardSummaryComponent
   ],
   imports: [
     MatButtonModule,

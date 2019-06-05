@@ -1,5 +1,5 @@
 <mgl-timeline focusOnOpen="true" mobileWidthThreshold="10000">
-    <mgl-timeline-entry *ngFor="let route of routes">
+    <mgl-timeline-entry *ngFor="let route of routes" [class.active]="route.recommendation">
         <mgl-timeline-entry-header>
           <div class="row">
             <div class="col-xs-12 col-md-2">
@@ -10,6 +10,7 @@
                 &nbsp;
                 <img
                     *ngFor="let icon of route.vehicleIcons"
+                    alt="vehicle"
                     src="{{ icon }}"
                     style="width: 1.3rem; height: 1.3rem"
                 />
@@ -44,7 +45,7 @@
             </div>
             <div class="points" style="display: flex; align-items: center">
               <span>{{ route.points }}</span>
-              <img src="../../assets/img/coin.png" style="width: 1rem; height: 1rem; margin-left: 0.2rem"/>
+              <img alt="coin" src="../../assets/img/coin.png" style="width: 1rem; height: 1rem; margin-left: 0.2rem"/>
             </div>
           </div>
           <hr />
@@ -53,12 +54,7 @@
                 • Erhöhte Auslastung der Linie {{ step.name }}
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12 col-md-3">
-              <a [routerLink]="['/routing', route.id]">→ Details</a>
-            </div>
-          </div>
-          <button mat-button (click)="startRoute(route.points)" class="stuff" style="float: right; background-color: green; margin-bottom: 5px">Start</button>
+          <button mat-button (click)="startRoute(route.points)" [routerLink]="['/routing', route.id]" class="start-button" style="float: right; background: darkgrey; margin-bottom: 5px">Start</button>
         </mgl-timeline-entry-content>
         <mgl-timeline-entry-dot size="70" [ngClass]="getLoadStateClass(route)">
           &nbsp;&nbsp;&nbsp;{{route.startTime | date:'HH:mm' }}

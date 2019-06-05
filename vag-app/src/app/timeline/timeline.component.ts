@@ -81,6 +81,7 @@ export class TimelineComponent implements OnInit {
                         this.routes = results.sort( ( a, b ) => a.startTime < b.startTime ? -1 : 1 );
                         if (environment.presentation) {
                           results[0].weather = new Weather('16', 'sunny');
+                          results[0].recommendation = true;
                         }
 
                         console.dir( this.routes );
