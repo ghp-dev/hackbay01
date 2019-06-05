@@ -8,7 +8,7 @@ import { CapacityRed, CapacityYellow, CapacityGreen } from '../services/vag-capa
 import { PreferencesService } from '../preferences/preferences.service';
 import { TransitLine } from '../shared/transit-line.entity';
 import { Router } from '@angular/router';
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from 'ngx-toastr';
 
 @Component( {
     selector: 'app-timeline',
@@ -97,6 +97,7 @@ export class TimelineComponent implements OnInit {
           classes['mgl-timeline-entry-dot-green'] = true;
           break;
         default:
+          // tslint:disable-next-line:no-string-literal
             classes['accent'] = true;
       }
 
