@@ -46,7 +46,7 @@ export class TimelineComponent implements OnInit {
 
 
                     results.forEach(item => item.steps = this.loadService.getLoad(item.id));
-                    this.routes = results.sort((a,b) => a.startTime < b.startTime ? -1 : 1);
+                    this.routes = results.sort((a, b) => a.startTime < b.startTime ? -1 : 1);
                     console.dir(this.routes);
                 },
                 ( status ) => {
@@ -59,9 +59,9 @@ export class TimelineComponent implements OnInit {
       let state = CapacityState.Green;
 
       route.steps.forEach(step => {
-        if (step['loadState'] === CapacityState.Red) {
+        if (step.loadState === CapacityState.Red) {
           state = CapacityState.Red;
-        } else if(step['loadState'] === CapacityState.Yellow && state === CapacityState.Green) {
+        } else if (step.loadState === CapacityState.Yellow && state === CapacityState.Green) {
           state = CapacityState.Yellow;
         }
       });
@@ -70,7 +70,7 @@ export class TimelineComponent implements OnInit {
     }
 
     getLoadStateClass(route: RoutingInfo): string {
-      switch(this.loadState(route)) {
+      switch (this.loadState(route)) {
         case CapacityState.Red:
           return 'mgl-timeline-entry-dot-red';
         case CapacityState.Yellow:
@@ -81,7 +81,7 @@ export class TimelineComponent implements OnInit {
     }
 
     getLoadStateClassOfStep(step: TransitLine): string {
-      switch(step['loadState']) {
+      switch (step.loadState) {
         case CapacityState.Red:
           return 'mgl-timeline-entry-dot-red';
         case CapacityState.Yellow:
