@@ -31,10 +31,12 @@ export class TimelineComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.toastrService.info('Linie U1 in 5 Minuten', 'Umsteigen - Frankenstraße', {
-            positionClass: 'toast-bottom-right',
-            timeOut: 10000,
-        });
+        setTimeout(() => {
+            this.toastrService.info('Linie U1 in 5 Minuten', 'Umsteigen - Frankenstraße', {
+                positionClass: 'toast-bottom-right',
+                timeOut: 10000,
+            });
+        }, 2000);
 
         this.weatherService.fetchWeatherForecastHourly(new Date()).subscribe(value => {
             this.weather = value;
