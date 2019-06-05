@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TransitLine } from '../../shared/transit-line.entity';
 import { RoutingRequestEntity } from '../../shared/routing-request.entity';
 import { RoutingInfo } from '../../shared/routing-info.entity';
+import { DecimalPipe } from '@angular/common';
 
 declare const google: any;
 
@@ -12,14 +13,14 @@ export class RoutingService {
 
     private routes: Map<string, RoutingInfo> = new Map<string, RoutingInfo>();
 
-    constructor() {
+    constructor(private decimalPipe: DecimalPipe) {
     }
 
     public getDirectionsService() {
         return new google.maps.DirectionsService();
     }
 
-    public navigate( routingRequestEntity: RoutingRequestEntity ) {
+    public navigate( routingRequestEntity: RoutingRequestEntity) {
 
         const routingInfos: RoutingInfo[] = [];
 
@@ -40,6 +41,7 @@ export class RoutingService {
                         const routingInfo = new RoutingInfo();
                         routingInfo.id = this.createRouteId();
                         routingInfo.startTime = routes.legs[ 0 ].departure_time.value;
+                        routingInfo.endTime = routes.legs[0].arrival_time.value;
 
                         routes.legs[ 0 ].steps.forEach( ( step ) => {
                             console.dir( step );
@@ -57,6 +59,7 @@ export class RoutingService {
                                     direction: step.transit.headsign,
                                     name: step.transit.line.short_name,
                                     icon: step.transit.line.vehicle.icon,
+                                    type: 'TRANSIT',
                                 } );
                             } else {
                                 console.dir(step);
@@ -64,8 +67,9 @@ export class RoutingService {
                                 routingInfo.steps.push( {
                                     time: new Date(), // TODO
                                     direction: null,
-                                    name: step.instructions,
-                                    icon: '',
+                                    name: (this.decimalPipe.transform((+step.duration.value) / 60, '1.0-0')) + 'min',
+                                    type: 'WALKING',
+                                    icon: '../../assets/img/walk-icon.png',
                                 });
                             }
                         } );

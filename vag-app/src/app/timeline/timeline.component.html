@@ -9,6 +9,7 @@
               <img
                   *ngFor="let icon of route.vehicleIcons"
                   src="{{ icon }}"
+                  style="width: 30px; height: 30PX"
               />
             </div>
             <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end">
@@ -21,23 +22,24 @@
             <div *ngFor="let step of route.steps; let i = index">
               <img
                   src="{{ step.icon }}"
+                  style="width: 30px; height: 30PX"
               />
               <span [ngClass]="getLoadStateClassOfStep(step)">{{ step.name }}</span>
               <span *ngIf="i < route.steps.length - 1"> → </span>
             </div>
           </div>
           <hr />
-          <div class="row">
-            <div class="col-xs-12 col-md-9">
-                • Behinderungen durch Berufsverkehr
+          <div class="row" *ngFor="let step of route.steps">
+            <div class="col-xs-12 col-md-9" *ngIf="step.loadState >= 60">
+                • Erhöhte Auslastung der Linie {{ step.name }}
             </div>
-            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end">
+            <div class="col-xs-12 col-md-3" style="display: flex; justify-content: flex-end" *ngIf="step.loadState >= 60">
                 → Details
             </div>
           </div>
         </mgl-timeline-entry-content>
-        <mgl-timeline-entry-dot  [ngClass]="getLoadStateClass(route)">
-          &nbsp;{{route.startTime | date:'HH:mm' }}
+        <mgl-timeline-entry-dot size="60" [ngClass]="getLoadStateClass(route)">
+          &nbsp;&nbsp;{{route.startTime | date:'HH:mm' }}<br/>&nbsp;&nbsp;{{route.endTime | date:'HH:mm' }}
         </mgl-timeline-entry-dot>
     </mgl-timeline-entry>
 </mgl-timeline>
