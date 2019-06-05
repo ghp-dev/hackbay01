@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
 import { RoutingInfo } from '../shared/routing-info.entity';
 import { WeatherService } from '../services/weather/weather.service';
@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { PointsCalculatorService } from '../services/points-calculator/points-calculator.service';
 import { isNgTemplate } from '@angular/compiler';
+import { animate, animation, style } from '@angular/animations';
 
 @Component( {
     selector: 'app-timeline',
@@ -20,6 +21,7 @@ import { isNgTemplate } from '@angular/compiler';
 } )
 export class TimelineComponent implements OnInit {
 
+  private animation;
   private travelDate: Date = environment.presentation ? new Date(2019, 5, 6, 7, 50) : new Date();
     private routes: any[] = [];
     private weather: Weather = new Weather('0', 'sunny');
@@ -32,7 +34,10 @@ export class TimelineComponent implements OnInit {
         private preferencesService: PreferencesService,
         private router: Router,
         private toastrService: ToastrService
-    ) {
+    ) { }
+
+    doSth(ref: ElementRef){
+      ref.nativeElement.class = 'stuff-animated';
     }
 
     triggerLeaveHomeToast() {
