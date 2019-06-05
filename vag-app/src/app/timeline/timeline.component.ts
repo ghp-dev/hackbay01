@@ -73,7 +73,7 @@ export class TimelineComponent implements OnInit {
                         results.forEach( item => {
                           item.steps = this.loadService.getLoad( item.id );
                           item.weather = this.weather;
-                          item.points = this.pointsCalculatorService.calculatePoints(this.weather, item, this.loadState(item))
+                          item.points = this.pointsCalculatorService.calculatePoints(this.weather, item, this.loadState(item));
                         });
 
                         this.routes = results.sort( ( a, b ) => a.startTime < b.startTime ? -1 : 1 );

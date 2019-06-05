@@ -13,6 +13,9 @@ Szenario:
 Als Paul Pendler will ich initial meine Präferenzen für Reisen hinterlegen, um komfortabel zur Arbeitsstätte zu kommen.
 
 
+Wohnort, Arbeitsstätte, Arbeitstagbeginn(Range), Leadtime (z.B. immer 30 min vor erstem Termin),
+Gewichtung (Umwelt, Billig, Schnell)
+
 Szenario:
 
 Als Paul Pendler will ich einmalig meine Zahlungsdaten hinterlegen, um für Reisen ohne Nachfragen, weiteres Hinterlegen von Zahlungsdaten bezahlen zu können
