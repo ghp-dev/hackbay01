@@ -7,8 +7,9 @@ import { LoadService } from '../services/loads/load.service';
 import { CapacityRed, CapacityYellow, CapacityGreen } from '../services/vag-capacity/capacity-state';
 import { PreferencesService } from '../preferences/preferences.service';
 import { TransitLine } from '../shared/transit-line.entity';
-import { Router } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Component( {
     selector: 'app-timeline',
@@ -17,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 } )
 export class TimelineComponent implements OnInit {
 
+  private travelDate: Date = environment.presentation ? new Date(2019, 5, 6, 7, 50) : new Date();
     private routes: any[] = [];
     private weather: Weather = new Weather('0', 'sunny');
 
@@ -41,36 +43,44 @@ export class TimelineComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.weatherService.fetchWeatherForecastHourly(new Date()).subscribe(value => {
-            this.weather = value;
-        });
 
         const preferences = this.preferencesService.load();
 
         if (!preferences.home || !preferences.work) {
             this.router.navigate(['/preferences']);
         } else {
+          this.weatherService.fetchWeatherForecastHourly(this.travelDate).subscribe(value => {
+            this.weather = value;
             this.routingService
                 .navigate( {
-                    startTime: new Date(),
+                    startTime: this.travelDate,
                     startAddress: preferences.home,
                     endAddress: preferences.work,
                 } )
                 .then(
-                    ( results: RoutingInfo[] ) => {
+                    ( results: any[] ) => {
 
                         console.dir( results );
 
 
-                        results.forEach( item => item.steps = this.loadService.getLoad( item.id ) );
+                        results.forEach( item => {
+                          item.steps = this.loadService.getLoad( item.id );
+                          item.weather = this.weather;
+                        });
+
                         this.routes = results.sort( ( a, b ) => a.startTime < b.startTime ? -1 : 1 );
+                        if (environment.presentation) {
+                          results[0].weather = new Weather('16', 'sunny');
+                        }
+
                         console.dir( this.routes );
                     },
                     ( status ) => {
                         console.error( status );
                     }
                 );
-        }
+              });
+            }
     }
 
     loadState(route: RoutingInfo): number {

@@ -33,6 +33,14 @@
             "scripts": []
           },
           "configurations": {
+            "presentation": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.presentation.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -65,6 +73,9 @@
             "browserTarget": "vag-app:build"
           },
           "configurations": {
+            "presentation": {
+              "browserTarget": "vag-app:build:presentation"
+            },
             "production": {
               "browserTarget": "vag-app:build:production"
             }
