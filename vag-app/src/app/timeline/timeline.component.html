@@ -25,7 +25,7 @@
           </div>
         </mgl-timeline-entry-header>
         <mgl-timeline-entry-content>
-          <div class="row" style="display: flex; justify-content: space-between; align-items: center; margin-right: 1rem">
+          <div class="row" style="display: flex; justify-content: space-between; align-items: center; margin-right: 0">
             <div></div>
             <div style="display: flex; justify-content: center;">
               <div *ngFor="let step of route.steps; let i = index" style="display: flex; align-items: center">
@@ -37,13 +37,14 @@
                 <span
                   *ngIf="getLoadStateClassOfStep(step)"
                   [ngClass]="getLoadStateClassOfStep(step)"
-                  style="color: white; padding: 0.1rem 0.25rem; border-radius: 0.2rem"
+                  style="color: white; margin-right: 0.2rem; padding: 0.1rem 0.25rem; border-radius: 0.2rem"
                 >{{ step.name }}</span>
                 <span *ngIf="i < route.steps.length - 1"> → </span>
               </div>
             </div>
-            <div class="points">
-              {{ route.points }} P.
+            <div class="points" style="display: flex; align-items: center">
+              <span>{{ route.points }}</span>
+              <img src="../../assets/img/coin.png" style="width: 1rem; height: 1rem; margin-left: 0.2rem"/>
             </div>
           </div>
           <hr />
