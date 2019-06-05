@@ -1,12 +1,13 @@
 <div class="headercontainer">
   <div class="headercontent" style="display: flex; justify-content: space-between;" >
-    <a class="appname" [routerLink]="['/']">
-      <h1>Timeline-App</h1>
+    <a class="appname" [routerLink]="['/']" style="display: flex; justify-content: center; align-items: center">
+      <img alt="logo" src="../../assets/img/logo.png" style="height: 4rem; margin-right: 0.5rem">
+      <h1 style="font-weight: 200">Companion</h1>
     </a>
     <div style="display: flex; flex-direction: row; align-items: center;">
       <div style="display: flex; align-items: center">
         <span>90</span>
-        <img src="../../assets/img/save-money.png" style="width: 30px; height: 30px; margin: 0 0.5rem; padding-bottom: 0.5rem">
+        <img alt="save-money" src="../../assets/img/save-money.png" style="width: 30px; height: 30px; margin: 0 0.5rem; padding-bottom: 0.5rem">
       </div>
       <button style="margin: 0 1rem; padding: 0.5rem" class="settings" [routerLink]="['/preferences']">Einstellungen</button>
   </div>
