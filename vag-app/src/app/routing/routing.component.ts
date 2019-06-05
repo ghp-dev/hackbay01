@@ -4,7 +4,7 @@ import { RoutingInfo } from '../shared/routing-info.entity';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-declare const google: any
+declare const google: any;
 declare const window: any;
 
 @Component( {
