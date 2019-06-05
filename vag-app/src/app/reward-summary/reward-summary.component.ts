@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WalletService } from "../services/wallet/wallet.service";
 
 @Component({
   selector: 'app-reward-summary',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RewardSummaryComponent implements OnInit {
 
-  constructor() { }
+  public beeBalance: number;
+
+  constructor(
+      private walletService: WalletService
+  ) { }
 
   ngOnInit() {
+    this.beeBalance = this.walletService.getBalance();
   }
 
 }

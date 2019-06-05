@@ -19,13 +19,13 @@
     <ng-template #grabTheBike>
       <div class="row">
         <div class="col">
-          <button mat-stroked-button style="margin: 5px">
+          <button mat-stroked-button style="margin: 5px" [routerLink]="['/reward-summary']">
             <img src="../../assets/lock.svg" height=256><br>
           </button>
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col" style="width: 100%; text-align: center;">
           <img src="../../assets/done.svg" [routerLink]="['/reward-summary']">
         </div>
       </div>
