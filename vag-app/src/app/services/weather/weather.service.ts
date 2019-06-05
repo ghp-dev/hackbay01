@@ -37,7 +37,7 @@ export class WeatherService {
   }
 
   private buildCompareDateString(date: Date) {
-    return date.getFullYear() + '-0' + (date.getUTCMonth()+1) + '-0' + (date.getUTCDate()+1) + 'T' + date.getHours() + ':00:00.000+02:00';
+    return  date.getFullYear() + '-0' + (date.getUTCMonth()+1) + '-0' + date.getUTCDate() + 'T' + (date.getHours() >= 10 ? date.getHours() : '0' + date.getHours()) + ':00:00.000+02:00';
   }
 
   private roundToHour(date) {
