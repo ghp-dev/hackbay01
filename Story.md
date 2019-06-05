@@ -18,6 +18,9 @@ Anstatt, dass ich dies alles selbst berücksichtigen muss, hilft mir MY-EN-ERGIE
 8. Alternativen werden angezeigt: Wahl mit Fahrrad wegen meisten Bonuspunkten => Geschichte: Entsperrung+Bezahlung durch App per NFC
 9. Ich komme entspannt und rechtzeitig an und freue mich erreichte Bonuspunkte
 
+**Ausblick:**
+* Einrichtung vereinfachen, z.B. ChatBot/Sprache
+* weitere Präferenzen (aus anderen Quellen füllen, z.B. Wohnort, Arbeitsstelle)
 
 **Q&A:**
 Gamification:
