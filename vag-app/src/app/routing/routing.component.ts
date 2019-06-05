@@ -2,9 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
 import { RoutingInfo } from '../shared/routing-info.entity';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from 'ngx-toastr';
 
 declare const google: any
+declare const window: any;
 
 @Component( {
     selector: 'app-routing',
@@ -48,28 +49,34 @@ export class RoutingComponent implements OnInit {
 
         const directionsRenderer = this.routingService.getDirectionsRenderer();
 
-        console.dir(this.route.apiResult);
-
-        directionsRenderer.setMap(this.map);
-        directionsRenderer.setDirections(this.route.apiResult);
-        directionsRenderer.setRouteIndex(this.route.routeIndex);
+        directionsRenderer.setMap( this.map );
+        directionsRenderer.setDirections( this.route.apiResult );
+        directionsRenderer.setRouteIndex( this.route.routeIndex );
     }
 
     private initToastr() {
-        setTimeout(() => {
-            this.toastrService.info('Linie U1 in 5 Minuten', 'Umsteigen - Frankenstraße', {
-                positionClass: 'toast-bottom-right',
-                timeOut: 10000,
+        this.route.steps
+            .filter((step) => step.type === 'TRANSIT')
+            .forEach((step, index) => {
+                setTimeout(() => {
+                    this.toastrService.info('Linie ' + step.name + ' in 5 Minuten', 'Umsteigen', {
+                        positionClass: 'toast-bottom-right',
+                        timeOut: 3000,
+                    });
+                }, (index + 1) * 5000);
             });
-        }, 4000);
     }
 
     ngOnInit() {
         this.activatedRoute.params.subscribe(params => {
             this.loadRoute(params.id);
 
-            this.initMap();
-            this.initToastr();
+            if (this.route) {
+                this.initMap();
+                this.initToastr();
+
+                window.scrollTo( 0, 0 );
+            }
         });
     }
 
