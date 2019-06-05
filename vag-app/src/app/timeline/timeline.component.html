@@ -49,12 +49,16 @@
             </div>
           </div>
           <hr />
-          <div class="row" *ngFor="let step of route.steps">
-            <div class="col-xs-12 col-md-9" *ngIf="step.loadState >= 60">
-                • Erhöhte Auslastung der Linie {{ step.name }}
+          <div class="row" style="padding: 0 0.2rem">
+            <div class="col-md-9" *ngFor="let step of route.steps">
+              <div *ngIf="step.loadState >= 60">
+                  • Erhöhte Auslastung der Linie {{ step.name }}
+              </div>
+            </div>
+            <div class="col-md-3" style="display:flex; justify-content: flex-end">
+              <button mat-button (click)="startRoute(route.points)" [routerLink]="['/routing', route.id]" class="start-button" style="background: darkgrey; margin-bottom: 5px">Start</button>
             </div>
           </div>
-          <button mat-button (click)="startRoute(route.points)" [routerLink]="['/routing', route.id]" class="start-button" style="float: right; background: darkgrey; margin-bottom: 5px">Start</button>
         </mgl-timeline-entry-content>
         <mgl-timeline-entry-dot size="70" [ngClass]="getLoadStateClass(route)">
           &nbsp;&nbsp;&nbsp;{{route.startTime | date:'HH:mm' }}
