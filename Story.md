@@ -16,7 +16,7 @@ Anstatt, dass ich dies alles selbst berücksichtigen muss, hilft mir MY-EN-ERGIE
 6. Ich steige in Bus ein, App Status aktualisiert sich.
 7. U-Bahn fällt aus => Notification über Alternative:
 8. Alternativen werden angezeigt: Wahl mit Fahrrad wegen meisten Bonuspunkten => Geschichte: Entsperrung+Bezahlung durch App per NFC
-9. Ich komme entspannt und rechtzeitig an
+9. Ich komme entspannt und rechtzeitig an und freue mich erreichte Bonuspunkte
 
 
 **Q&A:**
