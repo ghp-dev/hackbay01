@@ -22,7 +22,7 @@ export class RoutingComponent implements OnInit {
 
     public map: any;
 
-    private actualStep = 0;
+    private actualStep = 1;
 
     constructor(
         private routingService: RoutingService,
@@ -74,13 +74,13 @@ export class RoutingComponent implements OnInit {
     }
 
     triggerNextStep() {
-      if (this.actualStep === 0) {
+      if (this.actualStep === 1) {
         this.toastrService.info('Linie ' + this.route.steps[1].name + ' an nächster Haltestellen verlassen', 'Umsteigen', {
           positionClass: 'toast-bottom-right',
           timeOut: 3000,
         });
-        this.actualStep++;
-      } else if(this.actualStep === 1) {
+        setTimeout(() => this.actualStep++, 3000);
+      } else if(this.actualStep === 2) {
         this.router.navigate(['/option']);
       }
     }

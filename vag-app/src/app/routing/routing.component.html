@@ -2,7 +2,7 @@
 
 <div style="display: flex; justify-content: space-around">
 <div style="width: 75vw" *ngIf="route">
-  <mat-card *ngFor="let step of route.steps" style="width: 100%; margin: 1em 0;">
+  <mat-card *ngFor="let step of route.steps;let i = index" style="width: 100%; margin: 1em 0;" [class.active]="i === actualStep">
     <mat-card-header>
       <div mat-card-avatar>
         <img
