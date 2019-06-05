@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TransitLine } from '../../shared/transit-line.entity';
+import { TransitLine, TransitType } from '../../shared/transit-line.entity';
 import { RoutingRequestEntity } from '../../shared/routing-request.entity';
 import { RoutingInfo } from '../../shared/routing-info.entity';
 
@@ -57,6 +57,7 @@ export class RoutingService {
                                     direction: step.transit.headsign,
                                     name: step.transit.line.short_name,
                                     icon: step.transit.line.vehicle.icon,
+                                    type: TransitType.TRANSIT,
                                 } );
                             } else {
                                 console.dir(step);
@@ -66,6 +67,7 @@ export class RoutingService {
                                     direction: null,
                                     name: step.instructions,
                                     icon: '',
+                                    type: TransitType.WALKING,
                                 });
                             }
                         } );
