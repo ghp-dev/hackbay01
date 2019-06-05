@@ -13,14 +13,14 @@ export class RoutingService {
 
     private routes: Map<string, RoutingInfo> = new Map<string, RoutingInfo>();
 
-    constructor() {
+    constructor(private decimalPipe: DecimalPipe) {
     }
 
     public getDirectionsService() {
         return new google.maps.DirectionsService();
     }
 
-    public navigate( routingRequestEntity: RoutingRequestEntity, decimalPipe: DecimalPipe) {
+    public navigate( routingRequestEntity: RoutingRequestEntity) {
 
         const routingInfos: RoutingInfo[] = [];
 
@@ -67,7 +67,7 @@ export class RoutingService {
                                 routingInfo.steps.push( {
                                     time: new Date(), // TODO
                                     direction: null,
-                                    name: (decimalPipe.transform((+step.duration.value) / 60, '1.0-0')) + 'min',
+                                    name: (this.decimalPipe.transform((+step.duration.value) / 60, '1.0-0')) + 'min',
                                     type: 'WALKING',
                                     icon: '../../assets/img/walk-icon.png',
                                 });
