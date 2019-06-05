@@ -14,6 +14,12 @@ mgl-timeline-entry-dot {
   // background-size: 1800% 1800%;
 }
 
+.points {
+  display: flex;
+  align-items: flex-end;
+  color: darkgray;
+}
+
 .mgl-timeline-entry-dot-red {
   background: linear-gradient(124deg, darkred, darkred) !important;
 }

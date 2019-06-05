@@ -9,6 +9,8 @@ import { PreferencesService } from '../preferences/preferences.service';
 import { TransitLine } from '../shared/transit-line.entity';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { PointsCalculatorService } from '../services/points-calculator/points-calculator.service';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component( {
     selector: 'app-timeline',
@@ -24,6 +26,7 @@ export class TimelineComponent implements OnInit {
         private routingService: RoutingService,
         private weatherService: WeatherService,
         private loadService: LoadService,
+        private pointsCalculatorService: PointsCalculatorService,
         private preferencesService: PreferencesService,
         private router: Router,
         private toastrService: ToastrService
@@ -58,8 +61,9 @@ export class TimelineComponent implements OnInit {
 
                         console.dir( results );
 
-
                         results.forEach( item => item.steps = this.loadService.getLoad( item.id ) );
+                        results.forEach( item => item.points =
+                                          this.pointsCalculatorService.calculatePoints(this.weather, item, this.loadState(item)));
                         this.routes = results.sort( ( a, b ) => a.startTime < b.startTime ? -1 : 1 );
                         console.dir( this.routes );
                     },

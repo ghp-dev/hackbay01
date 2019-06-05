@@ -9,4 +9,5 @@ export class RoutingInfo {
     vehicleIcons: string[] = [];
 
     steps: Array<TransitLine> = [];
+    points: number;
 }

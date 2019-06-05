@@ -18,7 +18,10 @@
           </div>
         </mgl-timeline-entry-header>
         <mgl-timeline-entry-content>
-          <div class="row" style="display: flex; justify-content: center">
+          <div class="row" style="display: flex; justify-content: space-between">
+            <div>
+            </div>
+            <div style="display: flex; justify-content: center">
             <div *ngFor="let step of route.steps; let i = index">
               <img
                   src="{{ step.icon }}"
@@ -26,6 +29,10 @@
               />
               <span [ngClass]="getLoadStateClassOfStep(step)">{{ step.name }}</span>
               <span *ngIf="i < route.steps.length - 1"> → </span>
+            </div>
+          </div>
+            <div class="points">
+              {{ route.points }}
             </div>
           </div>
           <hr />
