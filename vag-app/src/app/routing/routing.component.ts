@@ -3,9 +3,10 @@ import { RoutingService } from '../services/routing/routing.service';
 import { RoutingInfo } from '../shared/routing-info.entity';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment.presentation';
 import { TransitType_Transit } from '../shared/transit-line.entity';
 
-declare const google: any
+declare const google: any;
 declare const window: any;
 
 @Component( {
@@ -20,6 +21,8 @@ export class RoutingComponent implements OnInit {
     @ViewChild('gmap', { static: true }) gmapElement: any;
 
     public map: any;
+
+    private actualStep = 0;
 
     constructor(
         private routingService: RoutingService,
@@ -56,16 +59,30 @@ export class RoutingComponent implements OnInit {
     }
 
     private initToastr() {
+      if (!environment.presentation) {
         this.route.steps
             .filter((step) => step.type === TransitType_Transit)
             .forEach((step, index) => {
                 setTimeout(() => {
-                    this.toastrService.info('Linie ' + step.name + ' in 5 Minuten', 'Umsteigen', {
+                    this.toastrService.info('Linie ' + step.name + ' an nächster Haltestellen verlassen', 'Umsteigen', {
                         positionClass: 'toast-bottom-right',
                         timeOut: 3000,
                     });
                 }, (index + 1) * 5000);
             });
+          }
+    }
+
+    triggerNextStep() {
+      if (this.actualStep === 0) {
+        this.toastrService.info('Linie ' + this.route.steps[1].name + ' an nächster Haltestellen verlassen', 'Umsteigen', {
+          positionClass: 'toast-bottom-right',
+          timeOut: 3000,
+        });
+        this.actualStep++;
+      } else if(this.actualStep === 1) {
+        this.router.navigate(['/option']);
+      }
     }
 
     ngOnInit() {
