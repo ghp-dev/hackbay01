@@ -59,7 +59,7 @@ export class RoutingComponent implements OnInit {
             .filter((step) => step.type === 'TRANSIT')
             .forEach((step, index) => {
                 setTimeout(() => {
-                    this.toastrService.info('Linie ' + step.name + ' in 5 Minuten', 'Umsteigen', {
+                    this.toastrService.info('Linie ' + step.name + ' an nächster Haltestellen verlassen', 'Umsteigen', {
                         positionClass: 'toast-bottom-right',
                         timeOut: 3000,
                     });
