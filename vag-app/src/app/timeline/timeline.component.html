@@ -25,21 +25,25 @@
           </div>
         </mgl-timeline-entry-header>
         <mgl-timeline-entry-content>
-          <div class="row" style="display: flex; justify-content: space-between">
-            <div>
+          <div class="row" style="display: flex; justify-content: space-between; align-items: center; margin-right: 1rem">
+            <div></div>
+            <div style="display: flex; justify-content: center;">
+              <div *ngFor="let step of route.steps; let i = index" style="display: flex; align-items: center">
+                <img
+                    alt="{{ step.icon }}"
+                    src="{{ step.icon }}"
+                    style="width: 30px; height: 30PX"
+                />
+                <span
+                  *ngIf="getLoadStateClassOfStep(step)"
+                  [ngClass]="getLoadStateClassOfStep(step)"
+                  style="color: white; padding: 0.1rem 0.25rem; border-radius: 0.2rem"
+                >{{ step.name }}</span>
+                <span *ngIf="i < route.steps.length - 1"> → </span>
+              </div>
             </div>
-            <div style="display: flex; justify-content: center">
-            <div *ngFor="let step of route.steps; let i = index">
-              <img
-                  src="{{ step.icon }}"
-                  style="width: 30px; height: 30PX"
-              />
-              <span [ngClass]="getLoadStateClassOfStep(step)">{{ step.name }}</span>
-              <span *ngIf="i < route.steps.length - 1"> → </span>
-            </div>
-          </div>
             <div class="points">
-              {{ route.points }}
+              {{ route.points }} P.
             </div>
           </div>
           <hr />
@@ -55,8 +59,10 @@
           </div>
           <button mat-button style="float: right; background-color: green; margin-bottom: 5px">Start</button>
         </mgl-timeline-entry-content>
-        <mgl-timeline-entry-dot size="60" [ngClass]="getLoadStateClass(route)">
-          &nbsp;&nbsp;{{route.startTime | date:'HH:mm' }}<br/>&nbsp;&nbsp;{{route.endTime | date:'HH:mm' }}
+        <mgl-timeline-entry-dot size="70" [ngClass]="getLoadStateClass(route)">
+          &nbsp;&nbsp;&nbsp;{{route.startTime | date:'HH:mm' }}
+          <br/>
+          &nbsp;&nbsp;&nbsp;{{route.endTime | date:'HH:mm' }}
         </mgl-timeline-entry-dot>
     </mgl-timeline-entry>
 </mgl-timeline>
