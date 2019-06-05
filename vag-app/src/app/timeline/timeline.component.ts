@@ -8,6 +8,7 @@ import { CapacityRed, CapacityYellow, CapacityGreen } from '../services/vag-capa
 import { PreferencesService } from '../preferences/preferences.service';
 import { TransitLine } from '../shared/transit-line.entity';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component( {
     selector: 'app-timeline',
@@ -24,8 +25,19 @@ export class TimelineComponent implements OnInit {
         private weatherService: WeatherService,
         private loadService: LoadService,
         private preferencesService: PreferencesService,
-        private router: Router
+        private router: Router,
+        private toastrService: ToastrService
     ) {
+    }
+
+    triggerLeaveHomeToast() {
+//      setTimeout(() => {
+        this.toastrService.info('in 5 Minuten musst du das Haus verlassen', 'Es ist Zeit', {
+            positionClass: 'toast-bottom-right',
+            timeOut: 10000,
+        });
+  //  }, 2000);
+
     }
 
     ngOnInit() {
