@@ -8,6 +8,7 @@ import { CapacityRed, CapacityYellow, CapacityGreen } from '../services/vag-capa
 import { PreferencesService } from '../preferences/preferences.service';
 import { TransitLine } from '../shared/transit-line.entity';
 import { Router } from '@angular/router';
+import { ToastrService } from "ngx-toastr";
 
 @Component( {
     selector: 'app-timeline',
@@ -24,11 +25,17 @@ export class TimelineComponent implements OnInit {
         private weatherService: WeatherService,
         private loadService: LoadService,
         private preferencesService: PreferencesService,
-        private router: Router
+        private router: Router,
+        private toastrService: ToastrService
     ) {
     }
 
     ngOnInit() {
+        this.toastrService.info('Linie U1 in 5 Minuten', 'Umsteigen - Frankenstraße', {
+            positionClass: 'toast-bottom-right',
+            timeOut: 10000,
+        });
+
         this.weatherService.fetchWeatherForecastHourly(new Date()).subscribe(value => {
             this.weather = value;
         });

@@ -13,6 +13,7 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { RoutingComponent } from './routing/routing.component';
 import { DecimalPipe } from '@angular/common';
 import { PreferencesComponent } from './preferences/preferences.component';
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PreferencesComponent } from './preferences/preferences.component';
     MglTimelineModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent]
