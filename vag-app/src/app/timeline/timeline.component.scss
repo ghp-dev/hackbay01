@@ -10,6 +10,12 @@ mgl-timeline-entry-dot {
   color: white;
 }
 
+.points {
+  display: flex;
+  align-items: flex-end;
+  color: darkgray;
+}
+
 .mgl-timeline-entry-dot-red {
   background: darkred !important;
 }

@@ -16,8 +16,6 @@ export class WeatherService {
   fetchWeatherForecastHourly(timestamp: Date): Observable<Weather> {
     const newTimestamp = this.buildCompareDateString(this.roundToHour(timestamp));
 
-    console.log('UTC-Timestamp for WeatherAPI-Response-Extraction:' + newTimestamp);
-
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
