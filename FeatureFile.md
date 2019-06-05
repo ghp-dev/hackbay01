@@ -6,13 +6,11 @@ Unterstütze mich vorausschauend, wenn ich vom Plan abweiche.
 
 
 
-Feature: Initiale Konfiguration
+## Feature: Initiale Konfiguration
 
 Szenario:
 
 Als Paul Pendler will ich initial meine Präferenzen für Reisen hinterlegen, um komfortabel zur Arbeitsstätte zu kommen.
-
-
 
 
 Szenario:
@@ -24,19 +22,19 @@ Szenario:
 Als Paul Pendler will ich meinen Wohnort, Zielort, ETA-Ranges hinterlegen
 
 
-Feature: Planung
+## Feature: Planung
 
 Als Paul Pendler will ich (dynamisch) rechtzeitig vor den Reiseantritt kommt eine Erinnerung, um die gewünschte ETA-Range sicher einzuhalten
 
 
 
-Feature: Vorbereitung
+## Feature: Vorbereitung
 
 Info über vorausberechnete Route
 
 Info im Fall von Änderungen (z.B. 10 minuten längere Reisezeit)
 
-Feature: Reiseantritt
+## Feature: Reiseantritt
 
 Szenario:
 
@@ -44,7 +42,7 @@ Als Paul Pendler will ich meinen Reisefortschritt in einer Navigationsapp nachvo
 
 
 
-Feature: Reise
+## Feature: Reise
 
 Szenario:
 
@@ -52,7 +50,7 @@ Als Paul Pendler erhalte ich eine Push Notification rechtzeitig vor dem Umsteige
 
 
 
-Feature: Optionen
+## Feature: Optionen
 
 
 Szenario:
@@ -67,31 +65,61 @@ Szenario:
 
 Reiseplan durch Optionswahl live ändern
 
+### Entscheidungen 
+ 
+Simpel wie 1-2-3
 
-Feature: Ankommen am Ziel
+Ohne Entscheidung auskommen, falls vorab 
+berechenbar
+
+
+## Feature: Ankommen am Ziel
 
 Als Paul Pendler will ich mich durch nichts davon abhalten lassen, meine Zielankunft zu geniessen.
 
 
 
-Feature: Bezahlen
 
-Pay-as-you-go
+
+## Feature: Bezahlen
+
+Pay-as-you-go 
+(NFC Chip (in Giro-Karte oder Smartphone) zum Ein- und Auschecken)
 Abo,
-Flexi,
+Flexi (Ticketoptionen für occasional frequent user),
 
 
-Belohnung / Kundenbindung / 
+## Feature Belohnung / Kundenbindung / 
 
-Gut gemacht, Battles
+Jede Fahrt wird belohnt. Bepunktung im Vergleich zur jeweils schlechtest möglichen Alternative 
+
+Nach Abschluss jeder Reise und beim Start der Anwendung Belohnung für das Punkte hamstern.
 
 
+Je nach Präferenz werden die Punkte umgewandelt in 
+- (Umwelt-)Charities
+- Individuell wirksame Goodies (Warengutscheine)
+
+Battles mit Social Friends?
 
 
+## Monetarisierung
+
+* Durch den erhöhten Komfort, 
+
+* Durch das Gamification / Belohnungssystem, 
+
+* Durch die flexibleren Bezahlmodelle
  
-Simple wie 1-2-3
+verlagern wir mehr Pendler vom Auto in den ÖPNV 
 
-Falls 
+Durch die Kooperationen (Taxi rufen, Fahrrad / Carsharing buchen, ...) lassen sich Provisionen erwirtschaften
+
+Durch die bessere Auslastung werden
+
+* Verzögerungen beim Ein- und Aussteigen reduziert
+* Im Schnitt weniger Fahrzeuge benötigt
+
 
 
 
