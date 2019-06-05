@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
 import { RoutingInfo } from '../shared/routing-info.entity';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from "ngx-toastr";
 
 declare const google: any
 
@@ -22,6 +23,7 @@ export class RoutingComponent implements OnInit {
         private routingService: RoutingService,
         private activatedRoute: ActivatedRoute,
         private router: Router,
+        private toastrService: ToastrService
     ) {
     }
 
@@ -53,11 +55,21 @@ export class RoutingComponent implements OnInit {
         directionsRenderer.setRouteIndex(this.route.routeIndex);
     }
 
+    private initToastr() {
+        setTimeout(() => {
+            this.toastrService.info('Linie U1 in 5 Minuten', 'Umsteigen - Frankenstraße', {
+                positionClass: 'toast-bottom-right',
+                timeOut: 10000,
+            });
+        }, 4000);
+    }
+
     ngOnInit() {
         this.activatedRoute.params.subscribe(params => {
             this.loadRoute(params.id);
 
             this.initMap();
+            this.initToastr();
         });
     }
 
