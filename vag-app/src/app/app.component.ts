@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
 
   title = 'vag-app';
 
-  constructor(private routingService: RoutingService) { }
+  constructor() { }
 
 
    ngOnInit(): void { }

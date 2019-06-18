@@ -9,10 +9,12 @@ export class VagCapacityService {
   constructor() { }
 
   getState(line: string, direction: string, time: Date): number {
-    if (direction === 'Nürnberg Hbf' && this.isCommutingTime(time)) {
+
+    var r = Math.random();
+    if (r >= 0.5) {
       return CapacityRed;
     }
-    if (line === 'U1' && this.isCommutingTime(time)) {
+    if (this.isCommutingTime(time)) {
       return CapacityRed;
     }
     if (line === 'U3') {
@@ -22,7 +24,9 @@ export class VagCapacityService {
   }
 
   private isCommutingTime(time: Date): boolean {
-    if (time.getHours() >= 7 && time.getHours() < 9) {
+    const now = new Date().getTime();
+    const diff = now - time.getTime();
+    if (diff >= 10 * 1000 * 60 && diff <= 40 * 1000 * 60) {
       return true;
     }
 

@@ -1,4 +1,4 @@
-const mappedIconName = {
+export const mappedIconName = {
     sunny: 'sunny',
     clear: 'sunny',
     mostly_sunny: 'sunny',

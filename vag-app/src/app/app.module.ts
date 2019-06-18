@@ -19,6 +19,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatButtonModule, MatCardModule, MatFormFieldModule } from '@angular/material';
 import { BikePickupComponent } from './bike-pickup/bike-pickup.component';
 import { RewardSummaryComponent } from './reward-summary/reward-summary.component';
+import {RoutingService} from './services/routing/routing.service';
+import {RoutingMockService} from './services/routing/routing-mock.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,10 @@ import { RewardSummaryComponent } from './reward-summary/reward-summary.componen
     FormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [DecimalPipe],
+  providers: [
+    DecimalPipe,
+    {provide: RoutingService, useClass: RoutingMockService}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

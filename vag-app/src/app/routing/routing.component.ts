@@ -43,7 +43,7 @@ export class RoutingComponent implements OnInit {
     }
 
     private initMap() {
-        const mapProp = {
+      /*  const mapProp = {
             center: new google.maps.LatLng(18.5793, 73.8143),
             zoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -55,7 +55,7 @@ export class RoutingComponent implements OnInit {
 
         directionsRenderer.setMap( this.map );
         directionsRenderer.setDirections( this.route.apiResult );
-        directionsRenderer.setRouteIndex( this.route.routeIndex );
+        directionsRenderer.setRouteIndex( this.route.routeIndex );*/
     }
 
     private initToastr() {
