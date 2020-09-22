@@ -3,6 +3,9 @@ import { MatCardModule } from '@angular/material';
 
 
 import { RoutingComponent } from './routing.component';
+import {DecimalPipe} from '@angular/common';
+import {RouterTestingModule} from '@angular/router/testing';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 describe('RoutingComponent', () => {
   let component: RoutingComponent;
@@ -10,8 +13,11 @@ describe('RoutingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatCardModule],
-      declarations: [ RoutingComponent ]
+      imports: [MatCardModule, RouterTestingModule, ToastrModule.forRoot()],
+      declarations: [ RoutingComponent ],
+      providers: [DecimalPipe,
+        ToastrService
+      ]
     })
     .compileComponents();
   }));
