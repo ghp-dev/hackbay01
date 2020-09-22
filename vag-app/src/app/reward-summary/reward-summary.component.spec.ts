@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RewardSummaryComponent } from './reward-summary.component';
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('RewardSummaryComponent', () => {
   let component: RewardSummaryComponent;
@@ -8,6 +9,7 @@ describe('RewardSummaryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ RewardSummaryComponent ]
     })
     .compileComponents();

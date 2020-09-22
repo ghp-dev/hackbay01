@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {VagCapacityService} from '../vag-capacity/vag-capacity.service';
 import {RoutingMockService} from '../routing/routing-mock.service';
 import {RoutingService} from '../routing/routing.service';
-import {CapacityGreen} from "../vag-capacity/capacity-state";
+import {CapacityGreen} from '../vag-capacity/capacity-state';
 
 @Injectable({
   providedIn: 'root'
